@@ -1,6 +1,6 @@
 # cloning to a local repo
 
-CD to your home directory and issue `git clone https://github.com/umrosbrian/debian_home_dir`.  You'll need to then move all of the contents of the `debian_home_dir` directory into the home directory.
+CD to your home directory and issue `git clone https://github.com/umrosbrian/debian_home_dir`.  You'll need to then move all of the contents of the `debian_home_dir` directory into the home directory.  You can do this by issuing the bash commands `find debian_home_dir -mindepth 1 -maxdepth 1 -exec mv '{}' . \; ; rmdir debian_home_dir`.
 
 # working in a local repo
 
