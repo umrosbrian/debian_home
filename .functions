@@ -360,7 +360,7 @@ mountNetworkDrives () {
 #	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/Shared2/Surg-ICAM/ /mnt/t
 #	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surgery-ICAM /mnt/y
 #	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/rosbrian /mnt/h
-#}
+}
 
 appleKeyboard () {
   #opens the file needed to correct keyboard bindings when the apple keyboard is attached via USB while the machine is running...switch the value to '0' and close
