@@ -129,12 +129,10 @@ LS_COLORS=$LS_COLORS:'fi=0;32:' ; export LS_COLORS #makes files green
 alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash \; new-window -c "~/python/mypkg" \; rename-window python \; split-window -v -c "~/python/mypkg" \; split-window -h -c "~/python/scripts" \; select-pane -U \; split-window -h -c "~/python/scripts" \; select-pane -L \; select-window -t :1"
 alias killtmux="tmux kill-server"
 alias startjup="cd ~/jupyter_venv/notebooks; source ../bin/activate; jupyter notebook"
-alias rsflask="sudo systemctl restart flask_app"
 alias temp="curl wttr.in/?0" # browse to https://wttr.in/:help to see all the options
 alias weather="curl wttr.in"
 alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
 alias sshpi="ssh -l pi 192.168.1.100"
-alias mdp="md_to_php.py"
 alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229"
 
 # use an absolute path rather than relying upon expansion of ~ 
