@@ -139,10 +139,14 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>cls ^i--<Esc>
 "comment python line
 nnoremap <leader>clp ^i#<Esc>
+" comment html line
+nnoremap <leader>clh ^i<!--<Esc>$a--><Esc>
 "uncomment sql line
 nnoremap <leader>uls :s/^\([[:space:]]*\)\(--\)/\1<CR>
 "uncomment python line
 nnoremap <leader>ulp :s/^\([[:space:]]*\)\(#\)/\1<CR>
+" uncomment html line
+nnoremap <leader>ulh :s/^\([[:space:]]*\)\(<!--\)/\1<CR>:s/-->$//<CR>
 
 "comment sql block...move cursor to first line, type 'mt' to set a mark, type the last line number, execute the shortcut...
 "it jumps to the last line then does a substitution with the range being from the mark to the current line

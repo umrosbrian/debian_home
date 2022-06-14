@@ -353,8 +353,9 @@ unmountNetworkDrives () {
   sudo umount ~/z
 }
 
-#mountNetworkDrives () {
-#  mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
+mountNetworkDrives () {
+    # this can only be issued from a machine that has a vpn connection, which means the mini
+  mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
 #	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surg-MAG /mnt/z
 #	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/Shared2/Surg-ICAM/ /mnt/t
 #	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surgery-ICAM /mnt/y
