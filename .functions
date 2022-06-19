@@ -406,14 +406,16 @@ copyVimrcs () {
 
 ghpat () {
     # The idea is to issue this function to put my github PAT into the clipboard so that I can use Cmd + v to paste it
-    # The file containing the PAT is encrypted.  Prompt for the file's password.  The -s option won't show what's being input by the user.
-    read -s -e -p "~/github_pat.txt password: " pwrd 
     # Because the vm doesn't have a clipboard I'll need to open vim on the mini.
     if [ $(hostname | tr -d '\n')  = mini\.local  ]
+    then 
+        # The file containing the PAT is encrypted.  Prompt for the file's password.  The -s option won't show what's being input by the user.
+        read -s -e -p "~/github_pat.txt password: " pwrd 
         #Vim will open using the commands to 1) use the password 2) copy the file's contents to the clipboard and 3) quit
-        then vim --cmd "set key=${pwrd}" -c ':%w !pbcopy' -c ':q' github_pat.txt
+        vim --cmd "set key=${pwrd}" -c ':%w !pbcopy' -c ':q' github_pat.txt
         echo "PAT copied to clipboard."
-        else echo "This function needs to be openned on the mini since a clipboard is needed"
+    else
+        echo "This function needs to be openned on the mini since a clipboard is needed"
     fi 
 
 }
