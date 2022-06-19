@@ -419,14 +419,11 @@ ghpat () {
     then 
         # The file containing the PAT is encrypted.  Prompt for the file's password.  The -s option won't show what's being input by the user.
         read -s -e -p "~/github_pat.txt password: " pwrd 
-<<<<<<< HEAD
         #Vim will open using the commands to 1) use the password 2) copy the file's contents to the clipboard and 3) quit
         vim --cmd "set key=${pwrd}" -c ':%w !pbcopy' -c ':q' ~/github_pat.txt
-=======
         # Vim will open using the commands to 1) use the password 2) copy the file's contents to the clipboard and 3) quit
         # The 'pbcopy' portion is specific to MacOS.  See https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim for other ways to copy to system clipboard.  In any case, since Ubuntu Server doesn't have X11 I don't think I'll be able to get the idea of putting the PAT anywhere on the VM.
         vim --cmd "set key=${pwrd}" -c ':%w !pbcopy' -c ':q' github_pat.txt
->>>>>>> 6077334d1e3a78f46cf58b0455e558fdd80480df
         echo "PAT copied to clipboard."
     else
         echo "This function needs to be openned on the mini since a clipboard is needed"
