@@ -293,8 +293,16 @@ rcp () {
 }
 
 actVE () {
-  #cur_dir = "$(echo $PWD)"
-  source ~/webserver/venv/bin/activate
+    case $HN in
+        webservervm)
+            source ~/webserver/venv/bin/activate
+            echo "~/webserver/venv activated"
+            ;;
+        local\.mini)
+            source ~/python3.9.6ve/bin/activate
+            echo "~/python3.9.6ve activated"
+            ;;
+    esac 
 }
 
 #this one is for Linux

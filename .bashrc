@@ -117,6 +117,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
 # my additions
 set -o vi # use Vi keybindings in the terminal
 export PATH="$PATH:~/python/scripts:~/.local/bin/:~/bin" # pip3 will be in ~/.local/bin
@@ -127,21 +128,35 @@ LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS #makes executables purple
 LS_COLORS=$LS_COLORS:'fi=0;32:' ; export LS_COLORS #makes files green
 
 # User specific aliases and functions
-alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash \; new-window -c "~/python/mypkg" \; rename-window python \; split-window -v -c "~/python/mypkg" \; split-window -h -c "~/python/scripts" \; select-pane -U \; split-window -h -c "~/python/scripts" \; select-pane -L \; select-window -t :1"
 alias killtmux="tmux kill-server"
 alias startjup="cd ~/jupyter_venv/notebooks; source ../bin/activate; jupyter notebook"
 alias temp="curl wttr.in/?0" # browse to https://wttr.in/:help to see all the options
 alias weather="curl wttr.in"
-alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
 alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
-alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
-if [ $(hostname | tr -d '\n')  = webservervm  ] ; then alias pwrds="vim ~/mini/pwrds.txt" ; fi # the 'hostname' command appends a newline character to the hostname so in the test I'm removing it
-if [ $(hostname | tr -d '\n')  = mini\.local  ] ; then alias pwrds="vim ~/pwrds.txt" ; fi
+
+# set an environmental variable having the hostname since I'll be using it in tests in both this file and in ~/.functions
+export HN=$(hostname | tr -d '\n') # the 'hostname' command appends a newline character to the hostname so in the test I'm removing it
+# set machine specific configs
+case $HN in
+    webservervm)
+        alias pwrds="vim ~/mini/pwrds.txt"
+        alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
+        alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash \; new-window -c "~/python/mypkg" \; rename-window python \; split-window -v -c "~/python/mypkg" \; split-window -h -c "~/python/scripts" \; select-pane -U \; split-window -h -c "~/python/scripts" \; select-pane -L \; select-window -t :1"
+        # use an absolute path rather than relying upon expansion of ~ 
+        # set the path to the parent of `mypkg` and put a `__init__.py` within `mypkg`
+        export PYTHONPATH="/home/rosbrian/python"
+        ;;
+            
+    mini\.local)
+        alias pwrds="vim ~/pwrds.txt"
+        alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
+        ;;
+    raspberrypi)
+        alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
+        ;;
+esac
 
 
-# use an absolute path rather than relying upon expansion of ~ 
-# set the path to the parent of `mypkg` and put a `__init__.py` within `mypkg`
-export PYTHONPATH="/home/rosbrian/python"
 
 IFS=$'\n'
 
