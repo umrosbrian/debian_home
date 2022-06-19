@@ -298,7 +298,7 @@ actVE () {
             source ~/webserver/venv/bin/activate
             echo "~/webserver/venv activated"
             ;;
-        local\.mini)
+        mini\.local)
             source ~/python3.9.6ve/bin/activate
             echo "~/python3.9.6ve activated"
             ;;
