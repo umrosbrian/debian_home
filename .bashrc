@@ -138,6 +138,7 @@ alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwa
 if [ $(hostname | tr -d '\n')  = webservervm  ] ; then alias pwrds="vim ~/mini/pwrds.txt" ; fi # the 'hostname' command appends a newline character to the hostname so in the test I'm removing it
 if [ $(hostname | tr -d '\n')  = mini\.local  ] ; then alias pwrds="vim ~/pwrds.txt" ; fi
 
+
 # use an absolute path rather than relying upon expansion of ~ 
 # set the path to the parent of `mypkg` and put a `__init__.py` within `mypkg`
 export PYTHONPATH="/home/rosbrian/python"
