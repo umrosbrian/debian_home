@@ -145,11 +145,13 @@ case $HN in
         # use an absolute path rather than relying upon expansion of ~ 
         # set the path to the parent of `mypkg` and put a `__init__.py` within `mypkg`
         export PYTHONPATH="/home/rosbrian/python"
+        alias userfolder="cd ~/mini/z/;ls"
         ;;
             
     mini\.local)
         alias pwrds="vim ~/pwrds.txt"
         alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
+        alias userfolder="cd ~/z;ls"
         ;;
     raspberrypi)
         alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
