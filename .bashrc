@@ -120,7 +120,6 @@ fi
 
 # my additions
 set -o vi # use Vi keybindings in the terminal
-export PATH="$PATH:~/python/scripts:~/.local/bin/:~/bin" # pip3 will be in ~/.local/bin
 
 #change colors that ls displays to make it more readable on tmux's white background
 #found this at https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
@@ -152,6 +151,7 @@ case $HN in
         alias pwrds="vim ~/pwrds.txt"
         alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
         alias userfolder="cd ~/z;ls"
+        export PATH="$PATH:~/python/scripts:~/.local/bin/:~/bin" # pip3 will be in ~/.local/bin
         ;;
     raspberrypi)
         alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
