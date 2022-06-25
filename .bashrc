@@ -144,6 +144,7 @@ case $HN in
         # use an absolute path rather than relying upon expansion of ~ 
         # set the path to the parent of `mypkg` and put a `__init__.py` within `mypkg`
         export PYTHONPATH="/home/rosbrian/python"
+        export PATH="$PATH:/home/rosbrian/python/scripts"
         alias userfolder="cd ~/mini/z/;ls"
         ;;
             
@@ -179,7 +180,8 @@ export PGPASSWORD=postgres
 export PGUSER=postgres
 export PGOPTIONS=--search_path=map,postgis
 
-#make vim the editor for crontab
+# make vim the editor for crontab
+# This will only change the editor for the user.  To use the same editor for sudo use `sudo -E crontab -e`
 export VISUAL=vim
 
 # don't make any bell sounds
