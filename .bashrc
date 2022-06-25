@@ -183,3 +183,6 @@ export VISUAL=vim
 # don't make any bell sounds
 # oddly, sourcing .bashrc may not turn off bell sounds...you may have to close and reopen the terminal
 set bell-style none
+
+# source ~/envars, which only root and the user 'rosbrian' can read
+source /Users/rosbrian/envars
