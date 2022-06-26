@@ -156,7 +156,7 @@ case $HN in
         alias userfolder="cd ~/z;ls"
         export PATH="$PATH:~/python/scripts:~/.local/bin/:~/bin" # pip3 will be in ~/.local/bin
         # source ~/envars, which only root and the user 'rosbrian' can read
-        source /Users/rosbrian/envars
+        source /tmp/vars
         ;;
     raspberrypi)
         alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
