@@ -155,7 +155,6 @@ case $HN in
         alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
         alias userfolder="cd ~/z;ls"
         export PATH="$PATH:~/python/scripts:~/.local/bin/:~/bin" # pip3 will be in ~/.local/bin
-        # source ~/envars, which only root and the user 'rosbrian' can read
         source /tmp/vars
         ;;
     raspberrypi)
