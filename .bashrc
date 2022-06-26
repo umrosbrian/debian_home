@@ -188,5 +188,6 @@ export VISUAL=vim
 # oddly, sourcing .bashrc may not turn off bell sounds...you may have to close and reopen the terminal
 set bell-style none
 
+# The file ~/envars contains assignments for environmental variables.  The file has only read/write permissions for the user 'rosbrian' and sudo, giving the variable values a little bit of protection.
 # source ~/envars, which only root and the user 'rosbrian' can read
 source /Users/rosbrian/envars
