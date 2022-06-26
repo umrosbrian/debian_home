@@ -146,6 +146,8 @@ case $HN in
         export PYTHONPATH="/home/rosbrian/python"
         export PATH="$PATH:/home/rosbrian/python/scripts"
         alias userfolder="cd ~/mini/z/;ls"
+        source /dev/shm/vars
+        #rm /dev/shm/vars
         ;;
             
     mini\.local)
@@ -153,6 +155,8 @@ case $HN in
         alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
         alias userfolder="cd ~/z;ls"
         export PATH="$PATH:~/python/scripts:~/.local/bin/:~/bin" # pip3 will be in ~/.local/bin
+        # source ~/envars, which only root and the user 'rosbrian' can read
+        source /Users/rosbrian/envars
         ;;
     raspberrypi)
         alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
@@ -188,5 +192,3 @@ export VISUAL=vim
 # oddly, sourcing .bashrc may not turn off bell sounds...you may have to close and reopen the terminal
 set bell-style none
 
-# source ~/envars, which only root and the user 'rosbrian' can read
-source /Users/rosbrian/envars
