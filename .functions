@@ -96,7 +96,8 @@ searchFiles () {
     if [ $? -eq 0 ] 
     then
       match=$(echo "$match" | sed 's/^[[:space:]]*//')
-      echo -e "$filename:\n\t$match"
+      #echo -e "$filename:\n\t$match"
+      echo -e "$filename" # this will just print the absolute path for a file having the matched pattern
     fi  
   done
 }
