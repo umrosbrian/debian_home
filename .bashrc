@@ -128,7 +128,6 @@ LS_COLORS=$LS_COLORS:'fi=0;32:' ; export LS_COLORS #makes files green
 
 # User specific aliases and functions
 alias killtmux="tmux kill-server"
-alias startjup="cd ~/jupyter_venv/notebooks; source ../bin/activate; jupyter notebook"
 alias temp="curl wttr.in/?0" # browse to https://wttr.in/:help to see all the options
 alias weather="curl wttr.in"
 alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
@@ -146,6 +145,7 @@ case $HN in
         export PYTHONPATH="/home/rosbrian/python"
         export PATH="$PATH:/home/rosbrian/python/scripts"
         alias userfolder="cd ~/mini/z/;ls"
+        alias startjup="jupyter notebook --no-browser"
         source /dev/shm/vars
         #rm /dev/shm/vars
         ;;
