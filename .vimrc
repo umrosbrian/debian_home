@@ -28,7 +28,7 @@ Plugin 'Valloric/YouCompleteMe'
 " can handle pathogen plugins by using 'Bundle' rather than 'Plugin' along
 " with the 'python-mode/python-mode' GitHub alias
 " Bundle 'python-mode/python-mode'
-Plugin 'jiangmiao/auto-pairs' " https://github.com/jiangmiao/auto-pairs
+" Plugin 'jiangmiao/auto-pairs' " https://github.com/jiangmiao/auto-pairs
 " Plugin 'davidhalter/jedi-vim' " https://github.com/davidhalter/jedi-vim - trying this since it's used for .py files in YouCompleteMe...too lightweight after you've used YCM
 " Plugin 'jupyter-vim/jupyter-vim' " https://github.com/jupyter-vim/jupyter-vim - send selection of python code to jupyter
 
