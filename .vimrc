@@ -167,23 +167,23 @@ nnoremap <leader>uibp G:'t,.s/^    //<CR>'t
 "join lines without adding a space
 nnoremap <leader>jl $Jx
 
-"print 'sql_composed = sql.SQL("").format()' by typing 'SC'
-"this will go into insert mode after the first double quote
-inoremap SC sql_composed = sql.SQL("").format()<Esc>2F"a
-
-"print 'pgdb.curs.execute(sql_composed)' by typing 'EC'
-"this will go into insert mode after 'sql_composed' in order to provide a
-"list/tuple for any '%s' placeholder
-inoremap EC pgdb.curs.execute(sql_composed)<Esc>ha
-
-"print 'pgdb.attempt_commit()' by typing 'AC'
-inoremap AC pgdb.attempt_commit()
-
-"print 'pgdb.fetchone()' by typing 'FO'
-inoremap FO pgdb.curs.fetchone()
-
-"print 'pgdb.fetchall()' by typing 'FA'
-inoremap FA pgdb.curs.fetchall()
+""print 'sql_composed = sql.SQL("").format()' by typing 'SC'
+""this will go into insert mode after the first double quote
+"inoremap SC sql_composed = sql.SQL("").format()<Esc>2F"a
+"
+""print 'pgdb.curs.execute(sql_composed)' by typing 'EC'
+""this will go into insert mode after 'sql_composed' in order to provide a
+""list/tuple for any '%s' placeholder
+"inoremap EC pgdb.curs.execute(sql_composed)<Esc>ha
+"
+""print 'pgdb.attempt_commit()' by typing 'AC'
+"inoremap AC pgdb.attempt_commit()
+"
+""print 'pgdb.fetchone()' by typing 'FO'
+"inoremap FO pgdb.curs.fetchone()
+"
+""print 'pgdb.fetchall()' by typing 'FA'
+"inoremap FA pgdb.curs.fetchall()
 
 "jump out to the right side of closed parenthesis or single quotes
 inoremap JO <Right>
@@ -193,6 +193,15 @@ inoremap HL --------------------------------------------------------------------
 
 " print <td></td> then jump between the tags
 inoremap TD <td></td><Esc>4hi
+
+" print LaTeX fractions - this populates the numerator then moves cursor to
+" the denominator
+inoremap Fone $\frac{1}{}$<Esc>hi
+inoremap Ftwo $\frac{2}{}$<Esc>hi
+inoremap Fthree $\frac{3}{}$<Esc>hi
+
+" print a LaTeX circle, which is similar to a degree symbol
+inoremap DEG  $^{\circ}$ 
 
 " hit 'leader + p' when in normal (not visual or insert) mode to toggle paste mode on/off
 function! TogglePaste()

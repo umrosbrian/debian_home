@@ -139,7 +139,9 @@ case $HN in
     webservervm)
         alias pwrds="vim ~/mini/pwrds.txt"
         alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
-        alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash \; new-window -c "~/python/mypkg" \; rename-window python \; split-window -v -c "~/python/mypkg" \; split-window -h -c "~/python/scripts" \; select-pane -U \; split-window -h -c "~/python/scripts" \; select-pane -L \; select-window -t :1"
+        alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
+        alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
+        alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash \; new-window \; rename-window a2hosting \; new-window -c "~/python/mypkg" \; rename-window python \; split-window -v -c "~/python/mypkg" \; split-window -h -c "~/python/scripts" \; select-pane -U \; split-window -h -c "~/python/scripts" \; select-pane -L \; select-window -t :1"
         # use an absolute path rather than relying upon expansion of ~ 
         # set the path to the parent of `mypkg` and put a `__init__.py` within `mypkg`
         export PYTHONPATH="/home/rosbrian/python"
@@ -147,6 +149,7 @@ case $HN in
         alias userfolder="cd ~/mini/z/;ls"
         alias startjup="jupyter notebook --no-browser"
         source /dev/shm/vars
+        alias sshdarter="ssh rosbrian@pop-os"
         #rm /dev/shm/vars
         ;;
             
