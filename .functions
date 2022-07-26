@@ -362,26 +362,24 @@ unmountNetworkDrives () {
   sudo umount ~/z
 }
 
-case $HN in
-    webservervm)
-        mountNetworkDrives () {
+mountNetworkDrives () {
+    case $HN in
+        webservervm)
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surg-MAG ~/z
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surgery-ICAM ~/y
-        }
-        ;;
-            
-    mini\.local)
-        mountNetworkDrives () {
+            ;;
+                
+        mini\.local)
             mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
-        }
-        ;;
-    raspberrypi)
-        foo=bar
-        ;;
-    pop-os)
-        foo=bar
-        ;;
-esac
+            ;;
+        raspberrypi)
+            foo=bar
+            ;;
+        pop-os)
+            foo=bar
+            ;;
+    esac
+} 
 
 #mountNetworkDrives () {
 #    # this can only be issued from a machine that has a vpn connection, which means the mini

@@ -160,9 +160,9 @@ nnoremap <leader>ucbs G:'t,.s/^--//<CR>'t
 "uncomment python block...same as the comment block shortcut but the 't at the end moves the cursor back to the mark
 nnoremap <leader>ucbp G:'t,.s/^#//<CR>'t
 "indent python block...works for mardown too
-nnoremap <leader>ibp G:'t,.s/^/    /<CR>'t
+nnoremap <leader>ib G:'t,.s/^/    /<CR>'t
 "unindent python block...works for mardown too
-nnoremap <leader>uibp G:'t,.s/^    //<CR>'t
+nnoremap <leader>uib G:'t,.s/^    //<CR>'t
 
 "join lines without adding a space
 nnoremap <leader>jl $Jx
