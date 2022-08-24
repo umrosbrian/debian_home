@@ -121,6 +121,9 @@ fi
 # my additions
 set -o vi # use Vi keybindings in the terminal
 
+# This pertains to the repo at github.com/umrosbrian/dotfiles and is described in the README.md file.
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
 #change colors that ls displays to make it more readable on tmux's white background
 #found this at https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
 LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS #makes executables purple
@@ -169,6 +172,9 @@ case $HN in
         alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
         alias mountVM="sshfs rosbrian@192.168.1.229:/home/rosbrian ~/vm"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
+        alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000"
+        alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000"
+        alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000"
         ;;
 esac
 
