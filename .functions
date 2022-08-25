@@ -307,11 +307,11 @@ actVE () {
 }
 
 #this one is for Linux
-#playDir () {
-#  for fileName in $(find . -mindepth 1 -maxdepth 1 -name '*\.[mM][pP]3' | sort)
-#  do mpg123 "$fileName"
-#  done
-#}
+playDir () {
+  for fileName in $(find . -mindepth 1 -maxdepth 1 -name '*\.[mM][pP]3' | sort)
+  do mpg123 "$fileName"
+  done
+}
 
 #this one is for macOS
 playdir() {
