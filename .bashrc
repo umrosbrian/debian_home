@@ -163,6 +163,9 @@ case $HN in
         export PATH="$PATH:~/python/scripts:~/.local/bin/:~/bin" # pip3 will be in ~/.local/bin
         #source /tmp/vars
         #rm /tmp/vars
+        alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000"
+        alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000"
+        alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000"
         ;;
     raspberrypi)
         alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
