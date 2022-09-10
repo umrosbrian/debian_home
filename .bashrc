@@ -148,7 +148,7 @@ case $HN in
         # use an absolute path rather than relying upon expansion of ~ 
         # set the path to the parent of `mypkg` and put a `__init__.py` within `mypkg`
         export PYTHONPATH="/home/rosbrian/python"
-        export PATH="$PATH:/home/rosbrian/python/scripts"
+        export PATH="$PATH:/home/rosbrian/python/scripts:/home/rosbrian/bin"
         alias userfolder="cd ~/mini/z/;ls"
         alias startjup="jupyter notebook --no-browser"
         source /dev/shm/vars
@@ -166,7 +166,7 @@ case $HN in
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000"
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000"
         alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000"
-        alias newtmux="tmux new-session \; rename-window vpn-rdp \; split-window -v \; resize-pane -U 12\; split-window -v \; resize-pane -U 6 \; split-window -v \; select-pane -U \; select-pane -U \; select-pane -U \; new-window \; rename-window bash \; select-window -t :1"
+        alias newtmux="tmux new-session \; rename-window vpn-rdp \; split-window -v \; resize-pane -U 12\; split-window -v \; resize-pane -U  \; split-window -v \; select-pane -U \; select-pane -U \; select-pane -U \; new-window \; rename-window bash \; select-window -t :1"
         ;;
     raspberrypi)
         alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
