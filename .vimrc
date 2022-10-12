@@ -194,6 +194,9 @@ inoremap HL --------------------------------------------------------------------
 " print <td></td> then jump between the tags
 inoremap TD <td></td><Esc>4hi
 
+" go to start of next line without leaving insert mode
+inoremap NL <Esc>j0i
+
 " print LaTeX fractions - this populates the numerator then moves cursor to
 " the denominator
 inoremap Fone $\frac{1}{}$<Esc>hi

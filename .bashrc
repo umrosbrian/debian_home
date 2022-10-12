@@ -163,9 +163,9 @@ case $HN in
         export PATH="$PATH:~/python/scripts:~/.local/bin/:~/bin" # pip3 will be in ~/.local/bin
         #source /tmp/vars
         #rm /tmp/vars
-        alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000"
-        alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000"
-        alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000"
+        alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
+        alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
+        alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
         alias newtmux="tmux new-session \; rename-window vpn-rdp \; split-window -v \; resize-pane -U 12\; split-window -v \; resize-pane -U  \; split-window -v \; select-pane -U \; select-pane -U \; select-pane -U \; new-window \; rename-window bash \; select-window -t :1"
         ;;
     raspberrypi)

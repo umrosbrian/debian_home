@@ -444,7 +444,7 @@ ghpat () {
         # Vim will open using the commands to 1) use the password 2) copy the file's contents to the clipboard and 3) quit
         # The 'pbcopy' portion is specific to MacOS.  See https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim for other ways to copy to system clipboard.  In any case, since Ubuntu Server doesn't have X11 I don't think I'll be able to get the idea of putting the PAT anywhere on the VM.
         # The assignment for the variable GHPWRD is hardcoded in the file /home/rosbrian/envars.  This file is sourced from .bashrc, which means that each shell will have this envrionmental variable.  The variable's value matches the encryption password for the github_pat.txt file
-        vim --cmd "set key=${GHPWRD}" -c ':%w !pbcopy' -c ':q' github_pat.txt
+        vim --cmd "set key=${GHPWRD}" -c ':%w !pbcopy' -c ':q' ~/github_pat.txt
         echo "PAT copied to clipboard."
     else
         echo "This function needs to be openned on the mini since a clipboard is needed"
