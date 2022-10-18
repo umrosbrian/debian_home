@@ -13,56 +13,56 @@ set statusline+=%{getcwd()} " show Vim's CWD
 set nu " turn on line numbers
 " set hidden " avoid the 'E37: No write since last change (add ! to override)' error when you open a new file without saving the current buffer first
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-" Plugin 'nathanaelkane/vim-indent-guides'
-" Plugin 'iamcco/markdown-preview.nvim'
-" python-mode's recommended installation is done via pathogen, however, Vundle
-" can handle pathogen plugins by using 'Bundle' rather than 'Plugin' along
-" with the 'python-mode/python-mode' GitHub alias
-" Bundle 'python-mode/python-mode'
-" Plugin 'jiangmiao/auto-pairs' " https://github.com/jiangmiao/auto-pairs
-" Plugin 'davidhalter/jedi-vim' " https://github.com/davidhalter/jedi-vim - trying this since it's used for .py files in YouCompleteMe...too lightweight after you've used YCM
-" Plugin 'jupyter-vim/jupyter-vim' " https://github.com/jupyter-vim/jupyter-vim - send selection of python code to jupyter
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" " set the runtime path to include Vundle and initialize
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+" 
+" " let Vundle manage Vundle, required
+" Plugin 'VundleVim/Vundle.vim'
+" Plugin 'Valloric/YouCompleteMe'
+" " Plugin 'nathanaelkane/vim-indent-guides'
+" " Plugin 'iamcco/markdown-preview.nvim'
+" " python-mode's recommended installation is done via pathogen, however, Vundle
+" " can handle pathogen plugins by using 'Bundle' rather than 'Plugin' along
+" " with the 'python-mode/python-mode' GitHub alias
+" " Bundle 'python-mode/python-mode'
+" " Plugin 'jiangmiao/auto-pairs' " https://github.com/jiangmiao/auto-pairs
+" " Plugin 'davidhalter/jedi-vim' " https://github.com/davidhalter/jedi-vim - trying this since it's used for .py files in YouCompleteMe...too lightweight after you've used YCM
+" " Plugin 'jupyter-vim/jupyter-vim' " https://github.com/jupyter-vim/jupyter-vim - send selection of python code to jupyter
+" 
+" " The following are examples of different formats supported.
+" " Keep Plugin commands between vundle#begin/end.
+" " plugin on GitHub repo
+" "Plugin 'tpope/vim-fugitive'
+" " plugin from http://vim-scripts.org/vim/scripts.html
+" " Plugin 'L9'
+" " Git plugin not hosted on GitHub
+" "Plugin 'git://git.wincent.com/command-t.git'
+" " git repos on your local machine (i.e. when working on your own plugin)
+" "Plugin 'file:///home/gmarik/path/to/plugin'
+" " The sparkup vim script is in a subdirectory of this repo called vim.
+" " Pass the path to set the runtimepath properly.
+" "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" " Install L9 and avoid a Naming conflict if you've already installed a
+" " different version somewhere else.
+" " Plugin 'ascenator/L9', {'name': 'newL9'}
+" 
+" " All of your Plugins must be added before the following line
+" call vundle#end()            " required
+" filetype plugin indent on    " required
+" " To ignore plugin indent changes, instead use:
+" "filetype plugin on
+" "
+" " Brief help
+" " :PluginList       - lists configured plugins
+" " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" "
+" " see :h vundle for more details or wiki for FAQ
+" " Put your non-Plugin stuff after this line
 
 ":color desert
 :set number
