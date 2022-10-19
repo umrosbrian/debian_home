@@ -303,6 +303,10 @@ actVE () {
             source ~/python3.9.6ve/bin/activate
             echo "~/python3.9.6ve activated"
             ;;
+        mi3-ss107.a2hosting.com)
+            source /home/imgexcom/virtualenv/venv/3.9/bin/activate
+            echo "/home/imgexcom/venv activated"
+            ;;
     esac 
 }
 
@@ -456,4 +460,5 @@ exclude () {
     # Add all but the files that are tracked in the debian_home repo
     cd
     find . -maxdepth 1 ! -name \.bashrc ! -name \.vimrc ! -name \.tmux\.conf ! -name \.functions ! -name README\.md ! -name \.ideavimrc | sed '/^\.$/d;s/^\.\///' > .git/info/exclude
+    echo ".git/info/exclude updated"
 }
