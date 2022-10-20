@@ -139,9 +139,13 @@ alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the s
 export HN=$(hostname | tr -d '\n') # the 'hostname' command appends a newline character to the hostname so in the test I'm removing it
 # set machine specific configs
 case $HN in
-    mswa0354\.home)
+    mswa0354\.*) # the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
         alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
+        alias newtmux="tmux new-session \; rename-window rdp \; split-window -v \; resize-pane -U  \; split-window -v \; select-pane -U \; select-pane -U \; new-window \; rename-window vim \; new-window \; rename-window bash \; select-window -t :1"
+        alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
+        alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
+        alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
         ;;
     webservervm)
         alias pwrds="vim ~/mini/pwrds.txt"
