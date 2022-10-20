@@ -2,7 +2,7 @@ set nocompatible " Tell Vim to behave like Vim.  Without this Vim will behave li
 filetype off                  " required
 syntax enable " show pretty colors
 filetype plugin on " enable plugins such as netrw
-set path=~,~/python/mypkg,~/python/scripts,~/webserver,~/webserver/static**,~/webserver/templates**,~/flask_fridays " make netrw recursively search for files in Vim's current working directory
+set path=~,~/python/mypkg,~/python/scripts,~/webserver,~/webserver/static**,~/webserver/templates**,~/flask_fridays,~/docs.img-ex.com/static** " make netrw recursively search for files in Vim's current working directory
 set wildmenu " display a banner containing netrw's search results
 set visualbell " make the error warning a screen flash rather than a bell sound
 set t_vb= " disable the code that would produce a screen flash
@@ -248,6 +248,7 @@ autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%,
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 " issue :Pub to convert the opened .md file to .html
+" The path to this file will need to be in PYTHONPATH
 command! Pub !md_to_php.py %
 " remove all backslash escapes in a .md file
 command! RemoveEscapes !remove_all_escapes_in_md.py %
