@@ -295,6 +295,11 @@ rcp () {
 
 actVE () {
     case $HN in
+        mi3-ss107.a2hosting.com)
+            # This activation looks a little different since the VE was built by virtualenv rather than venv
+            source /home/imgexcom/virtualenv/venv/3.9/bin/activate
+            echo "~/venv activated"
+            ;;
         webservervm)
             source ~/webserver/venv/bin/activate
             echo "~/webserver/venv activated"
