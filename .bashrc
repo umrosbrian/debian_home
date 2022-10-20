@@ -139,6 +139,10 @@ alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the s
 export HN=$(hostname | tr -d '\n') # the 'hostname' command appends a newline character to the hostname so in the test I'm removing it
 # set machine specific configs
 case $HN in
+    mswa0354\.home)
+        alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
+        alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
+        ;;
     webservervm)
         alias pwrds="vim ~/mini/pwrds.txt"
         alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
