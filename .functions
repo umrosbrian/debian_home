@@ -460,10 +460,3 @@ ghpat () {
     fi 
 
 }
-
-exclude () {
-    # Add all but the files that are tracked in the debian_home repo
-    cd
-    find . -maxdepth 1 ! -name \.bashrc ! -name \.vimrc ! -name \.tmux\.conf ! -name \.functions ! -name README\.md ! -name \.ideavimrc | sed '/^\.$/d;s/^\.\///' > .git/info/exclude
-    echo ".git/info/exclude updated"
-}
