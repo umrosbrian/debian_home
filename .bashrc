@@ -145,6 +145,7 @@ case $HN in
     mswa0354*)# the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
         alias ssh353="ssh rosbrian@mswa0353.ddns.med.umich.edu"
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
+        alias sshmini="ssh rosbrian@192.168.1.102"
         alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         alias newtmux="tmux new-session \; rename-window rdp \; split-window -v \; resize-pane -U  \; split-window -v \; select-pane -U \; select-pane -U \; new-window \; rename-window vim \; new-window \; rename-window bash \; select-window -t :1"
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
