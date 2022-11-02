@@ -133,7 +133,6 @@ LS_COLORS=$LS_COLORS:'fi=0;32:' ; export LS_COLORS #makes files green
 alias killtmux="tmux kill-server"
 alias temp="curl wttr.in/?0" # browse to https://wttr.in/:help to see all the options
 alias weather="curl wttr.in"
-alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
 
 # set an environmental variable having the hostname since I'll be using it in tests in both this file and in ~/.functions
 export HN=$(hostname | tr -d '\n') # the 'hostname' command appends a newline character to the hostname so in the test I'm removing it
@@ -151,6 +150,10 @@ case $HN in
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
         alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
+        alias rdpgrace="xfreerdp +clipboard /v:MSW00076.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
+        alias rdpjune="xfreerdp +clipboard /v:MSW01266.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
+        alias rdpcarol="xfreerdp +clipboard /v:MSW01837.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
+        alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
         ;;
     webservervm)
         alias pwrds="vim ~/mini/pwrds.txt"
@@ -181,6 +184,7 @@ case $HN in
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
         alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
         alias newtmux="tmux new-session \; rename-window vpn-rdp \; split-window -v \; resize-pane -U 12\; split-window -v \; resize-pane -U  \; split-window -v \; select-pane -U \; select-pane -U \; select-pane -U \; new-window \; rename-window bash \; select-window -t :1"
+        alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
         ;;
     raspberrypi)
         alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
@@ -194,6 +198,7 @@ case $HN in
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000"
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000"
         alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000"
+        alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
         ;;
 esac
 
