@@ -146,7 +146,7 @@ case $HN in
         alias ssh353="ssh rosbrian@mswa0353.ddns.med.umich.edu"
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
         alias sshmini="ssh rosbrian@192.168.1.102"
-        alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
+        alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         alias newtmux="tmux new-session \; rename-window vpn-rdp \; split-window -v \; resize-pane -U \; select-pane -U \; split-window -v \; select-pane -U \; select-pane -U \; split-window -v \; select-pane -U \; select-pane -U \; select-pane -U \; new-window \; rename-window vim \; new-window \; rename-window bash \; select-window -t :1"
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
@@ -159,7 +159,7 @@ case $HN in
         ;;
     webservervm)
         alias pwrds="vim ~/mini/pwrds.txt"
-        alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
+        alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash \; new-window \; rename-window a2hosting \; new-window -c "~/python/mypkg" \; rename-window python \; split-window -v -c "~/python/mypkg" \; split-window -h -c "~/python/scripts" \; select-pane -U \; split-window -h -c "~/python/scripts" \; select-pane -L \; select-window -t :1"
@@ -189,10 +189,10 @@ case $HN in
         alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
         ;;
     raspberrypi)
-        alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
+        alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         ;;
     pop-os)
-        alias mountMini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
+        alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
         alias mountVM="sshfs rosbrian@192.168.1.229:/home/rosbrian ~/vm"
