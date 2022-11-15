@@ -460,3 +460,12 @@ ghpat () {
     fi 
 
 }
+
+copytoa2h () {
+    if [ -z "$1" ]
+    then
+        echo "This functions needs a file path to copy."
+    else
+        scp -P 7822 "$1" "imgexcom@img-ex.com:/home/imgexcom/$2"
+    fi
+}
