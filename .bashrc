@@ -141,6 +141,9 @@ case $HN in
     mi3-ss107.a2hosting.com)
         export PATH="$PATH:/home/imgexcom/docs.img-ex.com/static/scripts"
         ;;
+    mswa0353*)
+        export PATH="$PATH:/Users/rosbrian/z/python/scripts"
+        ;;
     mswa0354*)# the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
         alias userfolder="cd /Volumes/Shared3/Surg-MAG/users/rosbrian"
         alias ssh353="ssh rosbrian@mswa0353.ddns.med.umich.edu"
@@ -173,7 +176,6 @@ case $HN in
         alias sshdarter="ssh rosbrian@pop-os"
         #rm /dev/shm/vars
         ;;
-            
     mini\.local)
         alias pwrds="vim ~/pwrds.txt"
         alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
@@ -204,8 +206,6 @@ case $HN in
         alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
         ;;
 esac
-
-
 
 IFS=$'\n'
 

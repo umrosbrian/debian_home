@@ -295,6 +295,10 @@ rcp () {
 
 actVE () {
     case $HN in
+        mswa0353*)
+            source /Users/rosbrian/PycharmProjects/mag/venv/bin/activate
+            echo "~/PycharmProjects/mag/venv activated"
+            ;;
         mi3-ss107.a2hosting.com)
             # This activation looks a little different since the VE was built by virtualenv rather than venv
             source /home/imgexcom/virtualenv/venv/3.9/bin/activate
