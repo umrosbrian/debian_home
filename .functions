@@ -373,9 +373,18 @@ unmountNetworkDrives () {
 
 mountNetworkDrives () {
     case $HN in
+        mswa0353\.ddns\.med\.umich\.edu)
+            mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
+            mount -t smbfs //10.31.192.39/Shared3/Surgery-ICAM ~/y
+            mount -t smbfs //10.30.219.143/rosbrian ~/h
+            # odd that a space is handled with a %20 rather than a \ escaped space
+            mount -t smbfs //10.30.219.143/Shared2/Surg-ICAM/ICAM%20Internal ~/t
+            ;;
         webservervm)
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surg-MAG ~/z
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surgery-ICAM ~/y
+            #sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/Shared2/Surg-ICAM/ /mnt/t
+            #sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/rosbrian /mnt/h
             ;;
                 
         mini\.local)
@@ -390,15 +399,6 @@ mountNetworkDrives () {
     esac
 } 
 
-#mountNetworkDrives () {
-#    # this can only be issued from a machine that has a vpn connection, which means the mini
-#  mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
-##	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surg-MAG /mnt/z
-##	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/Shared2/Surg-ICAM/ /mnt/t
-##	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surgery-ICAM /mnt/y
-##	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/rosbrian /mnt/h
-#}
-
 appleKeyboard () {
   #opens the file needed to correct keyboard bindings when the apple keyboard is attached via USB while the machine is running...switch the value to '0' and close
   #sudo echo 0 > /sys/module/hid_apple/parameters/fnmode
@@ -406,11 +406,7 @@ appleKeyboard () {
 }
 
 vpnOn () {
-  #start the vpn
   sudo openconnect -b vpn.med.umich.edu
-  #mount the network drives
-	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surg-MAG /mnt/z
-	#sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surgery-ICAM /mnt/y
 }
 
 vpnOff () {
