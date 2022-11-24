@@ -204,6 +204,7 @@ case $HN in
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000"
         alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000"
         alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
+        alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         ;;
 esac
 
