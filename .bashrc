@@ -207,6 +207,9 @@ case $HN in
         alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
         alias sshmini="ssh rosbrian@192.168.1.102"
         ;;
+    server\.imgexch\.com)
+        alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
+        ;;
 esac
 
 IFS=$'\n'
