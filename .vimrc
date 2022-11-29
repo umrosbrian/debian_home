@@ -207,8 +207,7 @@ inoremap Fthree $\frac{3}{}$<Esc>hi
 inoremap FIG <div class=figure style="width: 600px"><Enter>  <p><img src="" width="600"></p><Enter>  <p>caption</p><Enter></div><Esc>.2k0f"a
 
 " The idea of using colon blah came from Espanso text expander
-" keyboard symbols - got these at
-" http://xahlee.info/comp/unicode_computing_symbols.html
+" keyboard symbols - got these at http://xahlee.info/comp/unicode_computing_symbols.html
 inoremap :cmd ⌘
 inoremap :ctrl ⌃
 inoremap :opt ⌥
@@ -219,6 +218,7 @@ inoremap :esc ⎋
 inoremap :alt ⎇
 inoremap :tab ⇥
 inoremap :delete ⌫
+inoremap :space ␣
 " other symbols
 inoremap :deg °
 
