@@ -469,3 +469,10 @@ copytoa2h () {
         scp -P 7822 "$1" "imgexcom@img-ex.com:/home/imgexcom/$2"
     fi
 }
+
+printkeys () {
+    for public_key_file in $(find /etc/ssh/ -type f -name *\.pub)
+    do
+        ssh-keygen -l -f "$public_key_file"
+    done
+}
