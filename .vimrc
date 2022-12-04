@@ -2,7 +2,7 @@ set nocompatible " Tell Vim to behave like Vim.  Without this Vim will behave li
 filetype off                  " required
 syntax enable " show pretty colors
 filetype plugin on " enable plugins such as netrw
-set path=~,~/docs.img-ex.com/static**,~/PycharmProjects/** " make netrw recursively search for files in Vim's current working directory
+set path=~,~/docs.img-ex.com/static**,~/PycharmProjects/**,~/bin/** " make netrw recursively search for files in Vim's current working directory
 set wildmenu " display a banner containing netrw's search results
 set visualbell " make the error warning a screen flash rather than a bell sound
 set t_vb= " disable the code that would produce a screen flash
