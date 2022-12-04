@@ -6,6 +6,9 @@ makeShScript () {
   if [ $(ls "$1.sh" 2> /dev/null) ]
   then 
           echo "$1.sh already exists"
+  elif [ -z ${1+x} ]
+  then
+    echo "This function needs the file name as an argument"
   else
           touch "$1.sh"
           chmod +x "$1.sh"
