@@ -157,7 +157,7 @@ case $HN in
         alias rdpgrace="xfreerdp +clipboard /v:MSW00076.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
         alias rdpjune="xfreerdp +clipboard /v:MSW01266.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
         alias rdpcarol="xfreerdp +clipboard /v:MSW01837.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
-        alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
+        alias sshpi="ssh pi@192.168.1.100"
         alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
         ;;
     webservervm)
