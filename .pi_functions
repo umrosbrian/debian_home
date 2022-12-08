@@ -1,0 +1,561 @@
+# vim: set filetype=sh :
+#the commented line above is a vim modeline...vim reads it upon opening the document...it effectively tells vim that the document should have the syntactical color scheme of a .sh file...without it this document would just show in black and white
+
+makeShScript () {
+  #check if the file already exists...this function would clobber a pre-existing file
+  if [ $(ls "$1.sh" 2> /dev/null) ]
+  then 
+          echo "Either '$1.sh' already exists or an argument wasn't provided."
+  else
+          touch "$1.sh"
+          chmod +x "$1.sh"
+          #add shebang
+          echo '#!/bin/bash' > "$1.sh"
+          #set IFS
+          echo "IFS=$'\\n'" >> "$1.sh"
+    #source functions
+    echo "source ~/.functions" >> "$1.sh"
+          echo -e "\n" >> "$1.sh"
+          #open in insert mode at line 5
+          vim +startinsert +5 "$1.sh"
+  fi  
+}
+
+makePyScript () {
+  #check if the file already exists...this function would clobber a pre-existing file
+  if [ $(ls "$1.py" 2> /dev/null) ]
+  then
+          echo "Either '$1.py' already exists or an argument wasn't provided."
+  else
+          touch "$1.py"
+          chmod 775 "$1.py"
+          #add shebang
+          echo '#!/usr/bin/env python3' > "$1.py"
+          echo -e "\n" >> "$1.py"
+          #open in insert mode at line 3
+          vim +startinsert +3 "$1.py"
+  fi
+}
+
+query () {
+  #to allow for a multi-line query I'm going to replace all \n characters with a space
+  sqlString=$(echo "$1" | tr '\n' ' ')
+  #remove sql_log if there happens to be one from a previous use of this query
+  rm sql_log 2>/dev/null
+  #can't say that I understand how the redirection works but it pushes stderr to both the terminal and a file...the -a option of tee appends the stderr to the file
+  #queryResults=$(PGPASSWORD=changethis psql -t -h pgicam-prod-db.umms.med.umich.edu -U rosbrian sahmdb -c "$sqlString" 2> >(tee -a sql_log >&2))
+  queryResults=$(PGPASSWORD=postgres psql -t -h localhost -U postgres pidb -c "$sqlString" 2> >(tee -a sql_log >&2))
+  #print a message if sql_log wasn't empty...otherwise, remove it
+  if [ -s sql_log ]
+  then echo "there was a SQL error...it's recorded in ./sql_log"
+  else rm sql_log
+  fi
+	#I want the function to return a non-zero exit status if the query fails...note that this chunck needs to be at the end of the function since the if command's exit status is what's going to be returned from the function
+	if [ $? -ne 0 ]
+	then
+		#I'm intentionally using a command that I know will produce a non-zero exit status...it could be any command...not just mkdir
+		mkdir 2> /dev/null
+	else
+		echo "$queryResults" | sed 's/^[[:space:]]*//;/^$/d;s/[[:space:]]*|[[:space:]]*/|/g'
+	fi
+}
+
+pickFromList () {
+	#this takes a list of values as an input, numbers them, prompts for the the line number correcsponding to the correct value then returns the value #because the input values can come in the form of variables, cat'd files or arrays you need to format their input a little differetly for this function...see the three examples below
+	#for variables: pickFromList "$myVar"
+	#for files: myVar=$(cat <filename>); pickFromList "$myVar"
+	#for arrays: myVar=$(for value in ${myArr[@]}; do echo "$value"; done); pickFromList "$myVar"
+
+	#number each line (containing a value) of $1
+	counter=1
+	for line in $(echo "$1")
+	do
+		echo "$counter  $line"
+		counter=$((counter + 1))
+	done > /tmp/pickFromListValues.txt
+
+	#find the lowest numbered inactive tmux pane to view the query output...currently I don't make a new pane if only one is found but I should do that in the future
+	inactivePane=$(tmux list-panes | grep -v 'active' | cut -d":" -f1 | sort -n | head -1)
+	#show the file having numbered values in the $inactivePane
+	tmux run-shell -t $inactivePane "cat /tmp/pickFromListValues.txt"
+	read -p "which is the matching line number from the other tmux pane? " matchingLine
+	matchingValue=$(sed -n "${matchingLine}p" /tmp/pickFromListValues.txt | sed "s/^[0-9]*  //")
+	echo "$matchingValue"
+	#clear the $inactivePane...you manually do this any time using Ctrl + C while in the pane
+	tmux clear-history -t $inactivePane
+}
+
+#this searches $1 for a term then returns both the filename containing a match and the line containing the match
+#it would be really nice to have the grepped match maintain the red coloring...look at the compression fx script for this
+#I could add a subdirectory of ~/bin as a second argument so that not all .sh files in bin are grepped...if the second argument isn't there it wouldn't be used and all of ~/bin would be searched
+searchByFilename () {
+  IFS=$'\n'
+  echo "finding all files"
+  files=($(find "$1" -type f))
+  echo "${#files[@]} files found"
+  echo "testing files"
+  for filename in ${files[@]}
+  do match=$(echo "$filename" | grep -i -E "$2")
+    if [ $? -eq 0 ] 
+    then
+      match=$(echo "$match" | sed 's/^[[:space:]]*//')
+      echo -e "$filename:\n\t$match"
+    fi  
+  done
+}
+
+#replace single quotes with two single quotes to make a string SQL compliant
+sqlQuotes () {
+	echo "$(echo "$1" | sed "s/'/''/g")"
+}
+
+# This is a general-purpose function to ask Yes/No questions in Bash, either
+# with or without a default answer. It keeps repeating the question until it
+# gets a valid answer.
+# I got this from https://gist.github.com/davejamesmiller/1965569#file-ask-sh
+
+askYN() {
+    local prompt default reply
+
+    if [ "${2:-}" = "Y" ]; then
+        prompt="Y/n"
+        default=Y
+    elif [ "${2:-}" = "N" ]; then
+        prompt="y/N"
+        default=N
+    else
+        prompt="y/n"
+        default=
+    fi
+
+    while true; do
+
+        # Ask the question (not using "read -p" as it uses stderr not stdout)
+        echo -n "$1 [$prompt] "
+
+        # Read the answer (use /dev/tty in case stdin is redirected from somewhere else)
+        read reply </dev/tty
+
+        # Default?
+        if [ -z "$reply" ]; then
+            reply=$default
+        fi
+
+        # Check if the reply is valid
+        case "$reply" in
+            Y*|y*) return 0 ;;
+            N*|n*) return 1 ;;
+        esac
+
+    done
+}
+
+# EXAMPLE USAGE:
+# The function just returns an exit status...use if to test the return status
+#
+#if askYN "Do you want to do such-and-such?"; then
+#    echo "Yes"
+#else
+#    echo "No"
+#fi
+#
+## Default to Yes if the user presses enter without giving an answer:
+#if askYN "Do you want to do such-and-such?" Y; then
+#    echo "Yes"
+#else
+#    echo "No"
+#fi
+#
+## Default to No if the user presses enter without giving an answer:
+#if askYN "Do you want to do such-and-such?" N; then
+#    echo "Yes"
+#else
+#    echo "No"
+#fi
+#
+## Only do something if you say Yes
+#if askYN "Do you want to do such-and-such?"; then
+#    echo "Yes"
+#fi
+#
+## Only do something if you say No
+#if ! askYN "Do you want to do such-and-such?"; then
+#    echo "No"
+#fi
+#
+## Or if you prefer the shorter version:
+#askYN "Do you want to do such-and-such?" && echo "Yes"
+#
+#askYN "Do you want to do such-and-such?" || echo "No"
+
+#usage: 'nullIf $variableName'
+#returns 'NULL' if the variable is either blank or hasn't been initiallized or will return the value that the variable has been assigned if not blank
+nullIf () {
+	if [ -z "$1" ]
+	then
+		echo "NULL"
+	else
+		echo "$1"
+	fi
+}
+
+#usage: 'checkVar variableName'
+#${!1} is like preceding $1 with a $...it takes the variable name and precedes it with a $ in order to expand it
+checkVar () {
+	if [ -z "${!1}" ]
+	then
+		echo "$1 is either empty or hasn't been initialized"
+	else
+		echo "$1: ${!1}"
+	fi
+}
+
+pause () {
+  read -p "hit any key to continue" pause
+}
+
+#usage: '(command) & spinner'
+#found this at http://fitnr.com/showing-a-bash-spinner.html
+spinner() {
+    local pid=$!
+    local delay=0.75
+    local spinstr='|/-\'
+    while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+        local temp=${spinstr#?}
+        printf " [%c]  " "$spinstr"
+        local spinstr=$temp${spinstr%"$temp"}
+        sleep $delay
+        printf "\b\b\b\b\b\b"
+    done
+    printf "    \b\b\b\b"
+}
+
+#usage: ;(command) & copySpinner targetDirectory' where targetDirectory is where the files are being moved to and you want to monitor
+copySpinner() {
+    local pid=$!
+    local delay=5
+    local spinstr='|/-\'
+    local targetDir="$1"
+    while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+      echo -ne "$(ls "$targetDir" | wc -l) files transferred"\\r
+        sleep $delay
+    done
+}
+
+#usage: 'headerValues filename'
+#return the tag name and its value delimited with '|'
+headerValues () {
+  dcm2xml "$1" | awk -v FS="name=" '{print $2}' | tr -d '"' | cut -d"<" -f1 | tr '>' '|' | sed '/Unknown Tag/d;/^[[:space:]]*$/d;/Little Endian Explicit/d;/ApplicationHeaderInfo/d;s/\&amp\;/ \& /g'
+}
+
+playDir () {
+  #set the output volume
+  amixer -c 1 set Digital 77%
+  for fileName in $(find . -mindepth 1 -maxdepth 1 -name '*\.[mM][pP]3' | sort)
+  do mpg123 "$fileName"
+  done
+}
+
+#the suffix 'FS' stands for file system
+playRandomFS () {
+  #remove the files played during the last running of this function
+  rm filesPlayed.txt 2> /dev/null
+  #make a list of all files
+  read -p "generate new list of files (y/n)?: " newList
+  if [ $newList = 'y' ]
+  then echo "finding all .mp3 files" 
+    fileList=$(find . -mindepth 1 -type f -name '*\.[mM][pP]3')
+    echo "$fileList" > allMp3Files.txt
+  else
+    fileList=$(cat allMp3Files.txt)
+  fi
+  #get the length of the list...will be used to get a random number that's known to be under the list's length
+  listLength=$(echo "$fileList" | wc -l)
+  while true
+  do
+    #generate random number
+#    randomN=$(echo $((1 + RANDOM % listLength))) #this method doesn't produce number > ~ 60000 regardless of listLength
+    randomN=$(shuf -i 1-$listLength -n 1) #-i is used to define the range, -n gives the number of lines returned
+    #get the filename corresponding to the line number of randomN
+    fileName=$(echo "$fileList" | sed -n "${randomN}p")
+    echo "$fileName" >> filesPlayed.txt
+    #I'd like to use play as a player since it shows clipping but it lacks forward/reverse and sometimes skips tracks
+    mpg123 "$fileName"
+  done
+}
+
+#the suffix 'DB' stands for database
+playRandomDB () { #args: none
+  local lAbsPath
+
+  while true
+  do
+    #got this method of producing random fileid at https://dba.stackexchange.com/questions/259205/get-a-truly-random-row-from-a-postgresql-table-quickly/259211#259211...uses the fileid index so it's pretty quick
+    lAbsPath=$(query "select abspath from music.file where fileid = (select round(random()*(max(fileid)-min(fileid)) + min(fileid)) from music.file)")
+    playAbsPath "$lAbsPath"
+  done
+}
+
+playRandomDBSsh () { #args: 1) ssh conection
+  local lAbsPath
+
+  while true
+  do
+    lAbsPath=$(query "select abspath from music.file where fileid = (select round(random()*(max(fileid)-min(fileid)) + min(fileid)) from music.file)")
+    sox "$lAbsPath" -t mp3 - | ssh "$1"  mpg123 -
+  done
+}
+
+#usage: 'playRandomSsh user@ip'
+#this is the same as playRandom...it just outputs to a stream that's not the soundcard
+playRandomSsh () {
+  #remove the files played during the last running of this function
+  rm filesPlayed.txt 2> /dev/null
+  #make a list of all files
+  #read -p "generate new list of files (y/n)?: " newList
+  newList='n'
+  if [ $newList = 'y' ]
+  then echo "finding all .mp3 files" 
+    fileList=$(find . -mindepth 1 -type f -name '*\.[mM][pP]3')
+    echo "$fileList" > allMp3Files.txt
+  else
+    fileList=$(cat allMp3Files.txt)
+  fi
+  #get the length of the list...will be used to get a random number that's known to be under the list's length
+  listLength=$(echo "$fileList" | wc -l)
+  while true
+  do
+    #generate random number
+    randomN=$(shuf -i 1-$listLength -n 1)
+    #get the filename corresponding to the line number of randomN
+    fileName=$(echo "$fileList" | sed -n "${randomN}p")
+    echo "$fileName" >> filesPlayed.txt
+    #sox 1.mp3 -t mp3 -
+    #cat "$fileName" | ssh rosbrian@192.168.1.232 "cat >> /home/rosbrian/streamFromPi" #after issuing this I can do 'mpg123 /home/rosbrian/streamFromPi' on the Darter
+    sox "$fileName" -t mp3 - | ssh "$1" mpg123 -
+  done
+}
+
+#usage: 'playDirSsh user@ip'
+playDirSsh () {
+  for fileName in $(find . -mindepth 1 -maxdepth 1 -name '*\.[mM][pP]3' | sort)
+  do sox "$fileName" -t mp3 - | ssh "$1" mpg123 -
+  done
+}
+
+playLineIn () {
+  #set the output volume
+  #set input volume
+  amixer -c 1 set ADC 0db
+  #this simply pipes audio from the default input to the default output
+  arecord -f cd - | aplay
+  #the verbose command for the same thing would look like this:
+  #arecord -f S16_LE -r 44100 -c 2 --device="hw:1,0" | aplay
+}
+
+#usage: 'playInputSsh user@ip'
+playInputSsh () {
+  #this pipes audio from the default input to the default output of a client
+  arecord -f cd - | ssh "$1" aplay -
+}
+
+#usage: 'titleTags pattern_in_title_field'
+titleTags () {
+  for fileName in $(find . -type f)
+  #do title=$(id3v2 -R "$fileName" | grep TIT2 | sed 's/TIT2: //' | grep -i "$1")
+    #if [ "$title" != '' ]
+    #then echo "$fileName: $title"
+    #fi
+  do
+    tags=$(id3v2 -l "$fileName")
+    if [[ $(echo "$tags" | grep -i "title" | grep -i "$1") ]]
+    then
+      echo "$fileName $(echo -e "\t\t$tags" | grep -i "title" | grep -i "$1")"
+    fi
+  done
+}
+
+#usage: 'rcp source destination'
+rcp () {
+  #if there's a trailing / in the source path the contents of the source's last listed directory will be copied but not the directory itself...I don't like this behavior so I'm going to remove a trailing /...if one is desired simply use two since sed will only remove one
+  sourcePath=$(echo "$1" | sed 's/\/$//')
+  rsync -ah --info=progress2 --stats "$sourcePath" "$2"
+}
+
+actVE () {
+  source ~/python3ve/bin/activate
+}
+
+mount8TbDrive () { #commenting this since the drive is auto-mounting at /media/pi/8TB_external
+  #grep for the 7.3TB drive, remove the '└─', get the device having a number
+  device=$(lsblk | grep '7.3T' | tr -d '└─' | cut -d" " -f1 | sed -n '/[0-9]/p')
+  sudo mount "/dev/$device" /media/8TB
+  echo "/dev/$device mounted at /media/8TB"
+  cd /media/8TB/mp3
+}
+
+unmount8TbDrive () {
+  cd /home/pi
+  sudo umount /media/8TB
+}
+
+spinDown8TB () { #args: none
+  sudo hdparm -y /dev/sda1
+}
+
+#stands for 'get volume'
+gV () { #args: none
+  #issue 'amixer scontrols' to get a list of what you an control...the name within single quotes is what you put after 'sget' in the command below
+  amixer sget Digital | grep '%' | head -1 | sed 's/.*\[\([0-9]\{0,3\}%\).*/\1/'
+}
+
+#stands for 'change volume'
+cV () { #args: integer representing the % volume to set the output to
+ amixer -c 1 set Digital $1% 1> /dev/null
+}
+
+#record whatever is playing on the sound card
+recordLoopbackToMp3 () {
+  #set input level
+  amixer -c 1 set ADC 0db 1> /dev/null
+  #'cd' for the format is the same as specifying 'S16_LE -r 44100 -c 2'
+  arecord -f cd -V stereo -D loopout - | lame --abr 160 -b 112 -B 224 -q5 -m j - loopbackRecording.mp3
+}
+
+encodeToMP3 () {
+  outputFileName=$(echo "$1" | sed 's/wav$/mp3/')
+  lame --abr 160 -b 112 -B 224 -q5 -m j "$1" "$outputFileName"
+}
+
+recordLineInToMp3 () {
+  read -p "Enter the duration in minutes: " min
+  sec=$((min * 60)) #arecord takes seconds for the duration option
+  read -p "Enter the file name for the resulting .mp3: " fileName
+  fileName=$(echo "$fileName.mp3" | sed 's/\.mp3\.mp3$/\.mp3/') #if the filename was entered with an extension the sed takes care of it
+  echo "Issue 'mpg123 $fileName' in another tmux pane to listen to the file while it's being recorded."
+  arecord -f cd -V stereo -d "$sec" - | lame --abr 160 -b 112 -B 224 -q5 -m j - "$fileName"
+  if [[ $? -ne 0 ]]
+  then
+    echo -e "\n\t\t\t*******You'll need to stop listening to the Line In to start a recording.*********"
+  fi
+}
+
+makeFileIDChoice () { #args: 1) fileid
+  if [[ -z $1 ]]
+  then
+    echo "The fileid needs to be passed as an argument"
+  else
+    query "
+    insert into music.track_comment (recordingid,fileid,choice)
+  	select recordingid,fileid,'t'
+    from music.file f
+    where fileid = $1
+    and not exists (
+    select *
+    from music.track_comment tc
+    where fileid = $1
+    and choice is true
+    and f.fileid = tc.fileid)"
+  fi
+}
+
+showSetlistForRecID () { #args: 1) recordingid
+  if [[ -z $1 ]]
+  then
+    echo "The recordingid needs to be passed as an argument"
+  else
+    #sed removes any lines containing a md5 hash...it's unlikely any normal text would have one word that's 32 characters so this is pretty safe
+    #query "select setlist from music.setlist where recordingid = $1" | sed '/[a-z0-9]\{32\}/d' | less
+    query "select setlist from music.setlist where recordingid = $1" | less
+  fi
+}
+
+playRecordingID () { #args: 1) recording.recordingid
+  recID=$1
+	files=$(query "select distinct on (f.fileid) a.artist,r.recordingid,r.album,r.recordingdate,f.fileid,t.value,f.abspath
+		from music.artist a
+    join music.recording r on a.artistid = r.artistid and r.recordingid = $recID
+    join music.file f on r.recordingid = f.recordingid
+    left outer join music.tag t on t.fileid = f.fileid and tag ~* 'title' and tag != 'Album/Movie/Show title'
+    order by f.fileid")
+  echo -e "\nartist|recordingid|album|recordingdate|fileid|title"
+  for line in $(echo "$files")
+  do
+    echo "$line" | awk -F '|' -v OFS='' '{print $1,"|",$2,"|",$3,"|",$4,"|",$5,"|",$6}' #print all but the abspath
+    absFilePath=$(echo "$line" | cut -d'|' -f7)
+    mpg123 -q "$absFilePath"
+  done
+}
+
+#this searches $1 for a term then returns both the filename containing a match and the line containing the match
+#it would be really nice to have the grepped match maintain the red coloring...look at the compression fx script for this
+#I could add a subdirectory of ~/bin as a second argument so that not all .sh files in bin are grepped...if the second argument isn't there it wouldn't be used and all of ~/bin would be searched
+searchFiles () {
+  IFS=$'\n'
+  for filename in $(find "$1" -type f)
+  do match=$(grep -i "$2" "$filename")
+    if [ $? -eq 0 ] 
+    then
+      match=$(echo "$match" | sed 's/^[[:space:]]*//')
+      echo -e "$filename:\n\t$match"
+    fi  
+  done
+}
+
+promptToKillScript () { #args: none
+  #At a convenient point in a script (start of iteration) prompt the user to enter 'stop' to kill the script.  If nothing from the user is enter in x amount of time do nothing.
+	#oddly, read's timeout (-t) option needs to be listed before the prompt (-p) option
+	read -t 3 -p $'\e[0;31mEnter \'stop\' to kill the script: \e[0;0m' userResponse
+  if [[ $userResponse = 'stop' ]]
+  then
+    echo "Killing script."
+    exit
+  else
+    echo
+  fi
+  echo "Continuing script."
+}
+
+playRandomDBScaledSsh () { #args: 1) ssh connection
+  local lAbsPath lPlQuery lSqlString lSqlResponse
+  while true
+  do
+    lPlQuery="do \$\$
+       declare
+           random_0_to_9_var int;
+           random_playlist_scale_var int;
+           abspath_var text;
+    
+        begin
+            /*seed a random number between 0 and 9*/
+            random_0_to_9_var := (select round(random()*9));
+            case /*determine which playlist_scale this random number corresponds with*/
+                when random_0_to_9_var = 0 then random_playlist_scale_var = 1;
+                when random_0_to_9_var >= 1 and random_0_to_9_var <= 2 then random_playlist_scale_var = 2;
+                when random_0_to_9_var >= 3 and random_0_to_9_var <= 5 then random_playlist_scale_var = 3;
+                when random_0_to_9_var >= 6 and random_0_to_9_var <= 9 then random_playlist_scale_var = 4;
+                end case;
+    
+            abspath_var := (
+                with numbered_files as (
+                  select row_number() over() file_num,f.abspath /*number all the files for artist matching the playlist_scale so one can be randomly chosen*/
+                  from music.file f
+                  join music.recording r on f.recordingid = r.recordingid
+                  join music.artist a on r.artistid = a.artistid and a.rand_coef = random_playlist_scale_var),
+                random_file_num as (
+                  select round(random()*(max(file_num)-min(file_num)) + min(file_num)) rand_file_num /*randomly generate a number to be matched with the files in the numbered_files CTE table*/
+                  from numbered_files)
+                select nf.abspath /*pair the two CTE tables to get the abspath of a file*/
+                  from random_file_num rfn
+                  join numbered_files nf on rfn.rand_file_num = nf.file_num);
+            raise notice '%',abspath_var; /*output the abspath...this will be output to stderr*/
+        end;
+      \$\$"
+      
+      lSqlString="$(echo "$lPlQuery" | tr '\n' ' ')"
+      #'raise notice' statements in plpgsql are directed to stderr.  To capture them I'm redirecting stderr to stdout.  This will assign '$lSqlResponse' with the output of the 'raise notice' statement.
+      lSqlResponse="$(PGPASSWORD=postgres psql -t -h localhost -U postgres pidb -c "$lSqlString" 2>&1)"
+      lAbsPath="$(echo "$lSqlResponse" | grep 'NOTICE' | cut -d'/' -f2- | sed 's/^/\//')"
+      sox "$lAbsPath" -t mp3 - | ssh "$1"  mpg123 -
+  done
+}
