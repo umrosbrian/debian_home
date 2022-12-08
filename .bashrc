@@ -195,6 +195,8 @@ case $HN in
         ;;
     raspberrypi)
         alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
+        alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
+        source .functions_bak # has stuff to control the 8TB drive
         ;;
     pop-os)
         alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
