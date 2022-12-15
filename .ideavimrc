@@ -139,7 +139,7 @@ nnoremap <leader>jl $Jx
 :inoremap IR importlib.reload()<Esc>2ji
 
 " print an f-string's expression prior to that expression
-:inoremap :pexp <Esc>F{y}F{Pi:<Space>
+:inoremap ;pexp <Esc>vi{ybpa:<Space>
 
 " print the typical umpirecases, study, study_tags query
 nnoremap <leader>uss iselect<Enter>from sahm.umpirecases uc<Enter>join sahm.study s on s.umpireid = uc.umpireid<Enter>join sahm.study_tags st on s.studyid = st.studyid and tagid = 3 and tag_contents = ''<Esc>2ji
