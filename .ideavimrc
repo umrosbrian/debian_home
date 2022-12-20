@@ -3,6 +3,7 @@
 let mapleader = " "
 " disable beeps
 set visualbell
+set noerrorbells " This is for PyCharm on Windows
 
 "comment sql line
 nnoremap <leader>cls ^i--<Esc>
