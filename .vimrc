@@ -249,7 +249,7 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellesca
 
 " issue :Pub to convert the opened .md file to .html
 " The path to this file will need to be in PYTHONPATH
-command! Pub !md_to_php.py %
+command! Pub !/home/rosbrian/md_to_php.py %
 " remove all backslash escapes in a .md file
 command! RemoveEscapes !remove_all_escapes_in_md.py %
 
