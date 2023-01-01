@@ -482,7 +482,7 @@ copytoie () {
     fi
 }
 
-printkeys () {
+fingerprints () {
     for public_key_file in $(find /etc/ssh/ -type f -name *\.pub)
     do
         ssh-keygen -l -f "$public_key_file"

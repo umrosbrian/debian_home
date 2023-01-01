@@ -212,7 +212,7 @@ case $HN in
         ;;
     server\.imgexch\.com)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
-        export PATH="$PATH:/home/brian/bin"
+        export PATH="$PATH:/home/brian/bin:/home/brian/.local/bin"
         ;;
     ubuntuvm)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
