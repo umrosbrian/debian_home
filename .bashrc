@@ -143,6 +143,7 @@ case $HN in
         ;;
     mswa0353*)
         export PATH="$PATH:/Users/rosbrian/z/python/scripts"
+        alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         ;;
     mswa0354*)# the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
         alias userfolder="cd /Volumes/Shared3/Surg-MAG/users/rosbrian"
