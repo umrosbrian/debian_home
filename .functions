@@ -476,13 +476,17 @@ copytoa2h () {
 copytoie () {
     if [ -z "$1" ]
     then
-        echo "This functions needs a file path to copy."
+        echo "This functions needs a file/dir path to copy."
     else
-        scp -P 7822 "$1" "brian@server.imgexch.com:/home/brian/$2"
+        if [ -z "$2" ]
+            scp -P 7822 "$1" "brian@server.imgexch.com:/home/brian/upload"
+        else
+            scp -P 7822 "$1" "brian@server.imgexch.com:/home/brian/$2"
+        fi
     fi
 }
 
-printkeys () {
+fingerprints () {
     for public_key_file in $(find /etc/ssh/ -type f -name *\.pub)
     do
         ssh-keygen -l -f "$public_key_file"
