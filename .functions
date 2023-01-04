@@ -479,6 +479,7 @@ copytoie () {
         echo "This functions needs a file/dir path to copy."
     else
         if [ -z "$2" ]
+        then
             scp -P 7822 "$1" "brian@server.imgexch.com:/home/brian/upload"
         else
             scp -P 7822 "$1" "brian@server.imgexch.com:/home/brian/$2"
