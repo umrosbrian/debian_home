@@ -481,9 +481,9 @@ copytoie () {
     else
         if [ -z "$2" ]
         then
-            scp -P 7822 "$1" "brian@server.imgexch.com:/home/brian/upload"
+            scp -P 7822 -r "$1" "brian@server.imgexch.com:/home/brian/upload"
         else
-            scp -P 7822 "$1" "brian@server.imgexch.com:/home/brian/$2"
+            scp -P 7822 -r "$1" "brian@server.imgexch.com:/home/brian/$2"
         fi
     fi
 }
