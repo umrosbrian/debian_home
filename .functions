@@ -396,6 +396,7 @@ mountNetworkDrives () {
                 
         mini\.local)
             mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
+            mount -t smbfs //10.31.192.39/Shared3/Surgery-ICAM ~/y
             ;;
         raspberrypi)
             foo=bar
