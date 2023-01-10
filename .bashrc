@@ -145,6 +145,7 @@ case $HN in
         export PATH="$PATH:/Users/rosbrian/z/python/scripts"
         ;;
     mswa0354*)# the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
+        alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
         alias userfolder="cd /Volumes/Shared3/Surg-MAG/users/rosbrian"
         alias ssh353="ssh rosbrian@mswa0353.ddns.med.umich.edu"
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"

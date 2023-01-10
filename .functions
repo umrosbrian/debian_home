@@ -90,20 +90,20 @@ pickFromList () {
 }
 
 #this searches $1 for a term then returns both the filename containing a match and the line containing the match
+# Provide a path and optionally the arguments to find as a quoted argument to the function.  E.g. searchFiles 'DirName -type f -name "*\.txt" -o -name "*\.wpd"' MyTerm would search for MyTerm in all .txt and .wpd files within DirName. 
 #it would be really nice to have the grepped match maintain the red coloring...look at the compression fx script for this
-#I could add a subdirectory of ~/bin as a second argument so that not all .sh files in bin are grepped...if the second argument isn't there it wouldn't be used and all of ~/bin would be searched
 searchFiles () {
   IFS=$'\n'
-  for filename in $(find "$1" -type f)
+  for filename in $(echo "find $1" | bash)
   do match=$(grep -i "$2" "$filename")
     if [ $? -eq 0 ] 
     then
       match=$(echo "$match" | sed 's/^[[:space:]]*//')
-      #echo -e "$filename:\n\t$match"
-      echo -e "$filename" # this will just print the absolute path for a file having the matched pattern
+      printf "\e[1;30m$filename:\e[0m\n$match\n\n"
     fi  
   done
 }
+
 
 #replace single quotes with two single quotes to make a string SQL compliant
 sqlQuotes () {
