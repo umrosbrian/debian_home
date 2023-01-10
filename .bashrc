@@ -142,7 +142,14 @@ case $HN in
         export PATH="$PATH:/home/imgexcom/docs.img-ex.com/static/scripts"
         ;;
     mswa0353*)
-        export PATH="$PATH:/Users/rosbrian/z/python/scripts"
+        export PATH="$PATH:/Volumes/Shared3/Surg-MAG/users/rosbrian/python/scripts"
+        alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
+        alias userfolder="cd /Volumes/Shared3/Surg-MAG/users/rosbrian"
+        export PGDATABASE=sahmdb
+        export PGHOST=icamprddb.med.umich.edu
+        export PGPORT=4326
+        export PGUSER=rosbrian
+        export PGOPTIONS=--search_path=rosbrian,sahm,sven,imstore
         ;;
     mswa0354*)# the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
         alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
@@ -178,7 +185,7 @@ case $HN in
         #rm /dev/shm/vars
         ;;
     mini\.local)
-        alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
+        alias sshimgexch="ssh -p 7822 brian@imgexch.com"
         alias pwrds="vim ~/pwrds.txt"
         alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
@@ -213,7 +220,10 @@ case $HN in
         ;;
     server\.imgexch\.com)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
-        export PATH="$PATH:/home/brian/bin"
+        export PATH="$PATH:/home/brian/bin:/home/brian/.local/bin"
+        ;;
+    ubuntuvm)
+        alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         ;;
 esac
 
