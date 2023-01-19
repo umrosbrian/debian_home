@@ -94,7 +94,7 @@ pickFromList () {
 #it would be really nice to have the grepped match maintain the red coloring...look at the compression fx script for this
 searchFiles () {
   IFS=$'\n'
-  for filename in $(echo "find $1" | bash)
+  for filename in $(echo "find $1 -type f" | bash)
   do match=$(grep -i "$2" "$filename")
     if [ $? -eq 0 ] 
     then
@@ -376,11 +376,21 @@ mountPi8TB () {
 
 unmountNetworkDrives () {
   sudo umount ~/z
+  sudo umount ~/y
+  sudo umount ~/t
+  sudo umount ~/h
 }
 
 mountNetworkDrives () {
     case $HN in
         mswa0353\.ddns\.med\.umich\.edu)
+            mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
+            mount -t smbfs //10.31.192.39/Shared3/Surgery-ICAM ~/y
+            mount -t smbfs //10.30.219.143/rosbrian ~/h
+            # odd that a space is handled with a %20 rather than a \ escaped space
+            mount -t smbfs //10.30.219.143/Shared2/Surg-ICAM/ICAM%20Internal ~/t
+            ;;
+        mswa0354*)
             mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
             mount -t smbfs //10.31.192.39/Shared3/Surgery-ICAM ~/y
             mount -t smbfs //10.30.219.143/rosbrian ~/h
