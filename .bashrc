@@ -145,6 +145,7 @@ case $HN in
         export PATH="$PATH:/Volumes/Shared3/Surg-MAG/users/rosbrian/python/scripts"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         alias userfolder="cd /Volumes/Shared3/Surg-MAG/users/rosbrian"
+        alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
         export PGDATABASE=sahmdb
         export PGHOST=icamprddb.med.umich.edu
         export PGPORT=4326
