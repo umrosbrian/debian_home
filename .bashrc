@@ -154,23 +154,25 @@ case $HN in
         ;;
     mswa0354*)# the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
         export PATH="$PATH:/Users/rosbrian"
-        alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
+        alias newtmux="tmux new-session \; rename-window vpn-rdp \; split-window -v \; resize-pane -U \; select-pane -U \; split-window -v \; select-pane -U \; select-pane -U \; split-window -v \; select-pane -U \; select-pane -U \; select-pane -U \; new-window \; rename-window vim \; new-window \; rename-window bash \; select-window -t :1"
         alias userfolder="cd /Users/rosbrian/z"
         alias projects="cd /Users/rosbrian/z/projects"
         alias inboxes="cd /Users/rosbrian/y/SAHM/inboxes"
-        alias ssh353="ssh rosbrian@mswa0353.ddns.med.umich.edu"
+        alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
+        alias ssh353="ssh rosbrian@10.17.105.60"
+        alias vnc353="ssh -L5999:127.0.0.1:5900 -N -f -l rosbrian 10.17.105.60 ; open vnc://localhost:5999"  # found this at https://discussions.apple.com/thread/8060722
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
         alias sshmini="ssh rosbrian@192.168.1.102"
         alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
-        alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
-        alias newtmux="tmux new-session \; rename-window vpn-rdp \; split-window -v \; resize-pane -U \; select-pane -U \; split-window -v \; select-pane -U \; select-pane -U \; split-window -v \; select-pane -U \; select-pane -U \; select-pane -U \; new-window \; rename-window vim \; new-window \; rename-window bash \; select-window -t :1"
+        alias sshpi="ssh pi@192.168.1.100"
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
         alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
         alias rdpgrace="xfreerdp +clipboard /v:MSW00076.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
         alias rdpjune="xfreerdp +clipboard /v:MSW01266.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
         alias rdpcarol="xfreerdp +clipboard /v:MSW01837.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
-        alias sshpi="ssh pi@192.168.1.100"
+        alias rdprhvm="xfreerdp +clipboard /v:dgs-ap-ps1a /u:rosbrian /size:1900x1000"
+        alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
         ;;
     webservervm)
