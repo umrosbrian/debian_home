@@ -375,6 +375,9 @@ mountPi8TB () {
         mini\.local)
             mount -t smbfs //pi@192.168.1.100/pi8TB ~/pi8TB
             ;;
+        mswa0353\.ddns\.med\.umich\.edu)
+            mount -t smbfs //pi@192.168.1.100/pi8TB ~/pi8TB
+            ;;
         pop-os)
             sudo mount -t cifs -o username=pi,uid=$(id -u),gid=$(id -g) //192.168.1.100/pi8TB ~/pi8TB
             ;;
