@@ -191,7 +191,7 @@ case $HN in
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
         alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
         alias userfolder="cd ~/z;ls"
-        export PATH="$PATH:~/python/scripts:~/.local/bin/:~/bin" # pip3 will be in ~/.local/bin
+        export PATH="$PATH:~/python/scripts:~/.local/bin/:~/bin/:~/bin/CEUs" # pip3 will be in ~/.local/bin
         #source /tmp/vars
         #rm /tmp/vars
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
