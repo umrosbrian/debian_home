@@ -404,6 +404,7 @@ unmountNetworkDrives () {
 }
 
 mountNetworkDrives () {
+    # On Debian, install cifs-utils
     case $HN in
         mswa0353\.ddns\.med\.umich\.edu)
             mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
@@ -440,6 +441,11 @@ mountNetworkDrives () {
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surgery-ICAM /mnt/y
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/Shared2/Surg-ICAM/ /mnt/t
             #sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/rosbrian /mnt/h
+            ;;
+        omenubuntu)
+            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surg-MAG /mnt/z
+            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surgery-ICAM /mnt/y
+            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/Shared2/Surg-ICAM/ /mnt/t
             ;;
     esac
 } 

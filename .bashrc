@@ -242,7 +242,10 @@ case $HN in
         alias userfolder="cd /mnt/z/users/rosbrian"
         alias projects="cd /mnt/z/users/rosbrian/projects"
         alias inboxes="cd /mnt/y/SAHM/inboxes"
-        alias pycharm="bash /home/rosbrian/PyCharm/pycharm-2022.3.2/bin/pycharm.sh"
+        #alias pycharm="bash /home/rosbrian/PyCharm/pycharm-2022.3.2/bin/pycharm.sh"
+        ;;
+    omenubuntu)
+        alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         ;;
 esac
 
