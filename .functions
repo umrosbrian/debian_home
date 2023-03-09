@@ -383,7 +383,17 @@ playRandom () {
 
 mountPi8TB () {
     echo "Hit 'Enter' when prompted for the drive's password."
-  sudo mount -t cifs -o username=pi,uid=$(id -u),gid=$(id -g) //192.168.1.100/pi8TB ~/nas
+    case $HN in
+        mini\.local)
+            mount -t smbfs //pi@192.168.1.100/pi8TB ~/pi8TB
+            ;;
+        mswa0354\.home)
+            mount -t smbfs //pi@192.168.1.100/pi8TB ~/pi8TB
+            ;;
+        pop-os)
+            sudo mount -t cifs -o username=pi,uid=$(id -u),gid=$(id -g) //192.168.1.100/pi8TB ~/pi8TB
+            ;;
+    esac
 }
 
 unmountNetworkDrives () {
