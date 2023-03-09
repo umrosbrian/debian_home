@@ -48,7 +48,15 @@ query () {
   #can't say that I understand how the redirection works but it pushes stderr to both the terminal and a file...the -a option of tee appends the stderr to the file
   #queryResults=$(PGPASSWORD=changethis psql -t -h pgicam-prod-db.umms.med.umich.edu -U rosbrian sahmdb -c "$sqlString" 2> >(tee -a sql_log >&2))
   #queryResults=$(PGPASSWORD=postgres psql -t -h localhost -U postgres darterdb -c "$sqlString" 2> >(tee -a sql_log >&2))
-  queryResults=$(PGPASSWORD=postgres psql -t -h localhost -U postgres macdb -c "$sqlString" 2> >(tee -a sql_log >&2))
+  case $HN in 
+    dgs-ap-ps1a)
+      queryResults=$(psql -t -h icamprddb.med.umich.edu -p 4326 -U icammatlabuser sahmdb -c "$sqlString" 2> >(tee -a sql_log >&2))
+      ;;
+    *)
+      queryResults=$(PGPASSWORD=postgres psql -t -h localhost -U postgres macdb -c "$sqlString" 2> >(tee -a sql_log >&2))
+      ;;
+  esac
+
   #print a message if sql_log wasn't empty...otherwise, remove it
   if [ -s sql_log ]
   then echo "there was a SQL error...it's recorded in ./sql_log"
@@ -319,6 +327,10 @@ actVE () {
             source /home/imgexcom/virtualenv/venv/3.9/bin/activate
             echo "/home/imgexcom/venv activated"
             ;;
+        dgs-ap-ps1a)
+            source ~/.virtualenvs/imgex/bin/activate
+            echo "~/.virtualenvs/imgex activated"
+            ;;
     esac 
 }
 
@@ -413,7 +425,6 @@ mountNetworkDrives () {
             #sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/Shared2/Surg-ICAM/ /mnt/t
             #sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/rosbrian /mnt/h
             ;;
-                
         mini\.local)
             mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
             mount -t smbfs //10.31.192.39/Shared3/Surgery-ICAM ~/y
@@ -423,6 +434,12 @@ mountNetworkDrives () {
             ;;
         pop-os)
             foo=bar
+            ;;
+        dgs-ap-ps1a)
+            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surg-MAG /mnt/z
+            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surgery-ICAM /mnt/y
+            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/Shared2/Surg-ICAM/ /mnt/t
+            #sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/rosbrian /mnt/h
             ;;
     esac
 } 

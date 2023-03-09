@@ -234,6 +234,15 @@ case $HN in
     ubuntuvm)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         ;;
+    dgs-ap-ps1a)
+        export TERM=xterm
+        alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
+        export PATH="$PATH:/home/rosbrian/bin:/home/rosbrian/.local/bin"
+        alias userfolder="cd /mnt/z/users/rosbrian"
+        alias projects="cd /mnt/z/users/rosbrian/projects"
+        alias inboxes="cd /mnt/y/SAHM/inboxes"
+        alias pycharm="bash /home/rosbrian/PyCharm/pycharm-2022.3.2/bin/pycharm.sh"
+        ;;
 esac
 
 IFS=$'\n'
