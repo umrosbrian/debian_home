@@ -166,13 +166,14 @@ case $HN in
         alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
         alias sshpi="ssh pi@192.168.1.100"
         alias sshicamlinux="ssh rosbrian@icamlinux.surg.med.umich.edu"  # Use the 99 level-2 password
+        alias sshbizon="ssh rosbrian@10.17.105.53"
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
         alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
         alias rdpgrace="xfreerdp +clipboard /v:MSW00076.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
         alias rdpjune="xfreerdp +clipboard /v:MSW01266.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
         alias rdpcarol="xfreerdp +clipboard /v:MSW01837.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
-        alias rdprhvm="xfreerdp +clipboard /v:dgs-ap-ps1a /u:rosbrian /size:1900x1000"
+        alias rdprhvm="xfreerdp +clipboard /v:dgs-ap-ps1a /u:rosbrian /size:1900x1000 /bpp:16"
         alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
         ;;
