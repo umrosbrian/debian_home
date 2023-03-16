@@ -149,6 +149,7 @@ case $HN in
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
         alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
+        alias rdpomen="xfreerdp +clipboard /v:omenubuntu.ddns.med.umich.edu /u:rosbrian /size:1900x1000"
         export PGDATABASE=sahmdb
         export PGHOST=icamprddb.med.umich.edu
         export PGPORT=4326
