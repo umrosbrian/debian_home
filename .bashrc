@@ -242,7 +242,7 @@ case $HN in
     dgs-ap-ps1a)
         export TERM=xterm
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
-        export PATH="$PATH:/home/rosbrian/bin:/home/rosbrian/.local/bin"
+        export PATH="$PATH:/home/rosbrian/bin:/mnt/z/users/rosbrian/python/scripts"
         alias userfolder="cd /mnt/z/users/rosbrian"
         alias projects="cd /mnt/z/users/rosbrian/projects"
         alias inboxes="cd /mnt/y/SAHM/inboxes"
