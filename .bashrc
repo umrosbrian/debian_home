@@ -170,7 +170,7 @@ case $HN in
         alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
         alias sshpi="ssh pi@192.168.1.100"
         alias sshicamlinux="ssh rosbrian@icamlinux.surg.med.umich.edu"  # Use the 99 level-2 password
-        alias sshbizon="ssh rosbrian@10.17.105.53"
+        alias sshbizon="ssh rosbrian@dl.ddns.med.umich.edu"
         alias sshomen="ssh rosbrian@omenubuntu.ddns.med.umich.edu"
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
