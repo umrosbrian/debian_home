@@ -414,8 +414,9 @@ mountNetworkDrives () {
             mount -t smbfs //10.30.219.143/Shared2/Surg-ICAM/ICAM%20Internal ~/t
             ;;
         mswa0354*)
-            mount -t smbfs //corefs2.med.umich.edu/Shared3/Surg-MAG/users/rosbrian ~/z
-            mount -t smbfs //corefs2.med.umich.edu/Shared3/Surgery-ICAM ~/y
+            # I'm currently mounting Shared3 in /Volumes for MATLAB
+            #mount -t smbfs //corefs2.med.umich.edu/Shared3/Surg-MAG/users/rosbrian ~/z
+            #mount -t smbfs //corefs2.med.umich.edu/Shared3/Surgery-ICAM ~/y
             mount -t smbfs //10.30.219.143/rosbrian ~/h
             # odd that a space is handled with a %20 rather than a \ escaped space
             mount -t smbfs //10.30.219.143/Shared2/Surg-ICAM/ICAM%20Internal ~/t
