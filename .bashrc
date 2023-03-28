@@ -242,10 +242,10 @@ case $HN in
     dgs-ap-ps1a)
         export TERM=xterm
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
-        export PATH="$PATH:/home/rosbrian/bin:/mnt/z/users/rosbrian/python/scripts"
-        alias userfolder="cd /mnt/z/users/rosbrian"
-        alias projects="cd /mnt/z/users/rosbrian/projects"
-        alias inboxes="cd /mnt/y/SAHM/inboxes"
+        export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-ICAM/users/rosbrian/python/scripts"
+        alias userfolder="cd /mnt/Shared3/Surg-MAG/users/rosbrian"
+        alias projects="userfolder ; cd projects"
+        alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
         #alias pycharm="bash /home/rosbrian/PyCharm/pycharm-2022.3.2/bin/pycharm.sh"
         ;;
     omenubuntu)
