@@ -158,7 +158,7 @@ case $HN in
         ;;
     mswa0354*)# the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
         export PATH="$PATH:/Users/rosbrian"
-        alias newtmux="tmux new-session \; rename-window vpn-rdp \; split-window -v \; resize-pane -U \; select-pane -U \; split-window -v \; select-pane -U \; select-pane -U \; split-window -v \; select-pane -U \; select-pane -U \; select-pane -U \; new-window \; rename-window vim \; new-window \; rename-window bash \; select-window -t :1"
+        alias newtmux="tmux new-session \; rename-window vpn-rdp \; new-window \; rename-window vim \; new-window \; rename-window bash \; select-window -t :1"
         alias userfolder="cd /Users/rosbrian/z"
         alias projects="cd /Users/rosbrian/z/projects"
         alias inboxes="cd /Users/rosbrian/y/SAHM/inboxes"
