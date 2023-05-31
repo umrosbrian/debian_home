@@ -202,6 +202,7 @@ case $HN in
     mini\.local)
         alias sshimgexch="ssh -p 7822 brian@imgexch.com"
         alias pwrds="vim ~/pwrds.txt"
+        alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
         alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
         alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
