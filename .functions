@@ -328,8 +328,8 @@ actVE () {
             echo "/home/imgexcom/venv activated"
             ;;
         dgs-ap-ps1a)
-            source ~/.virtualenvs/imgex/bin/activate
-            echo "~/.virtualenvs/imgex activated"
+            source ~/.virtualenvs/magpy_remote/bin/activate
+            echo "magpy_remote activated"
             ;;
     esac 
 }
@@ -438,10 +438,8 @@ mountNetworkDrives () {
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3 /mnt/Shared3
             ;;
         dgs-ap-ps1a)
-            #sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surg-MAG /mnt/z
-            #sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surgery-ICAM /mnt/y
-            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/Shared2/Surg-ICAM/ /mnt/t
-            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.30.219.143/rosbrian /mnt/h
+            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs2.med.umich.edu/Shared3 /mnt/Shared3
+            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs.med.umich.edu/Shared2/Surg-ICAM/ /mnt/t
             ;;
         omenubuntu)
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surg-MAG /mnt/z
