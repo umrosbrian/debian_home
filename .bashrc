@@ -224,6 +224,7 @@ case $HN in
         alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
+        alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
         alias mountVM="sshfs rosbrian@192.168.1.229:/home/rosbrian ~/vm"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000"
