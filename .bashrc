@@ -199,7 +199,7 @@ case $HN in
         alias sshdarter="ssh rosbrian@pop-os"
         #rm /dev/shm/vars
         ;;
-    mini\.local)
+    mini\.*)
         alias sshimgexch="ssh -p 7822 brian@imgexch.com"
         alias pwrds="vim ~/pwrds.txt"
         alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
