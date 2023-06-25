@@ -184,7 +184,6 @@ case $HN in
         alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
         ;;
     webservervm)
-        alias pwrds="vim ~/mini/pwrds.txt"
         alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
