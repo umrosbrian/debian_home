@@ -188,9 +188,6 @@ nnoremap <leader>jl $Jx
 "jump out to the right side of closed parenthesis or single quotes
 inoremap JO <Right>
 
-"print a horizontal line by typing 'HL'
-inoremap HL -----------------------------------------------------------------------------------------------------------------------------------------------------------------------<Esc>o
-
 " print <td></td> then jump between the tags
 inoremap TD <td></td><Esc>4hi
 
