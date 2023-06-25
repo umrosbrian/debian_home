@@ -159,9 +159,9 @@ case $HN in
     mswa0354*)# the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
         export PATH="$PATH:/Users/rosbrian"
         alias newtmux="tmux new-session \; rename-window vpn-rdp \; new-window \; rename-window vim \; new-window \; rename-window bash \; select-window -t :1"
-        alias userfolder="cd /Users/rosbrian/z"
-        alias projects="cd /Users/rosbrian/z/projects"
-        alias inboxes="cd /Users/rosbrian/y/SAHM/inboxes"
+        alias userfolder="cd /Volumes/Shared3/Surg-MAG/users/rosbrian"
+        alias projects="cd /Volumes/Shared3/Surg-MAG/users/rosbrian/projects"
+        alias inboxes="cd /Volumes/Shared3/Surgery-ICAM/SAHM/inboxes"
         alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
         alias ssh353="ssh rosbrian@MSWA0353.ddns.med.umich.edu"
         alias vnc353="ssh -L5999:127.0.0.1:5900 -N -f -l rosbrian MSWA0353.ddns.med.umich.edu ; open vnc://localhost:5999"  # found this at https://discussions.apple.com/thread/8060722
