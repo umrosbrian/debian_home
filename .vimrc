@@ -78,6 +78,8 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
+" Done highlight matches when searching
+set nohlsearch
 
 ""------------------------------------------------------------------
 "" make PEP 8 (python standard) indentation when a .py file is opened
