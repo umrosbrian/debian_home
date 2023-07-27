@@ -70,6 +70,9 @@ nnoremap <leader>ssp iset search_path to rosbrian,sahm,registry,public;<Esc>
 "join lines without adding a space
 nnoremap <leader>jl $Jx
 
+"wrap a SQL query in a sqlalchemy text()
+nnoremap <leader>wsb G:'t,.s/^/         /<CR>$a"""<Esc>xxxa)<Esc>'tOt = text("""<Esc>xxx$x
+
 "do Ctrl+Alt+U to show columns of table under cursor
 
 "remove the closing parenthesis after they're automatically generated...
