@@ -9,11 +9,20 @@ set noerrorbells " This is for PyCharm on Windows
 nnoremap <leader>cls ^i--<Esc>
 "comment python line
 nnoremap <leader>clp ^i# <Esc>
+"comment html line
+nnoremap <leader>clh ^i<!--<Esc>$a--><Esc>
+"comment jinja line
+nnoremap <leader>clj ^i{# <Esc>$a #}<Esc>x
 
 "uncomment sql line
 nnoremap <leader>uls :s/^\([[:space:]]*\)\(--\)/\1<CR>
 "uncomment python line
 nnoremap <leader>ulp :s/^\([[:space:]]*\)\(#\)/\1<CR>hx
+"uncomment html line
+nnoremap <leader>ulh :s/<!--//<CR>:s/-->//<CR>
+"uncomment jinja line
+nnoremap <leader>ulj :s/{# //<CR>:s/ #}//<CR>
+
 
 "highlight a commented line in order for Ctrl + Return to be hit to execute it
 nnoremap <leader>hcl 0ll<C-v>$
@@ -143,7 +152,7 @@ nnoremap <leader>wsb G:'t,.s/^/         /<CR>$a"""<Esc>xxxa)<Esc>'tOt = text("""
 :inoremap IR importlib.reload()<Esc>2ji
 
 " print an f-string's expression prior to that expression
-:inoremap @pe <Esc>vi{yhPa:<Esc>f}a
+:inoremap @pe <Esc>vi{yhPa: <Esc>f}a
 
 " print the typical umpirecases, study, study_tags query
 nnoremap <leader>uss iselect<Enter>from sahm.umpirecases uc<Enter>join sahm.study s on s.umpireid = uc.umpireid<Enter>join sahm.study_tags st on s.studyid = st.studyid and tagid = 3 and tag_contents = ''<Esc>2ji
