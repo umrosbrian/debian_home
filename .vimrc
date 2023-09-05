@@ -203,7 +203,8 @@ inoremap Ftwo $\frac{2}{}$<Esc>hi
 inoremap Fthree $\frac{3}{}$<Esc>hi
 
 " print the HTML needed to insert an image and caption that's wrapped with the image
-inoremap @fig <div class=figure style="width: 600px"><Enter>  <p><img src="" width="600"></p><Enter>  <p>caption</p><Enter></div><Esc>.2k0f"a
+inoremap @fig <div class=figure style="width: 600px"><CR>  <p><img src="" width="600"></p><CR>  <p>caption</p><CR></div><Esc>2k0f"a
+".2k0f"a
 
 " The idea of using colon blah came from Espanso text expander
 " keyboard symbols - got these at http://xahlee.info/comp/unicode_computing_symbols.html
