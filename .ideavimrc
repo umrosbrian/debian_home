@@ -158,4 +158,8 @@ nnoremap <leader>wsb G:'t,.s/^/         /<CR>$a"""<Esc>xxxa)<Esc>'tOt = text("""
 nnoremap <leader>uss iselect<Enter>from sahm.umpirecases uc<Enter>join sahm.study s on s.umpireid = uc.umpireid<Enter>join sahm.study_tags st on s.studyid = st.studyid and tagid = 3 and tag_contents = ''<Esc>2ji
 
 " print a PEP-compliant separator with comment section in middle
-:inoremap @sep #<Space><Esc>118a-<Esc>a<Enter>#<Enter>#<Space><Esc>118a-<Esc>k$a<Space>
+:inoremap @psep #<Space><Esc>118a-<Esc>a<Enter>#<Enter>#<Space><Esc>118a-<Esc>k$a<Space>
+
+" print a C style separator with comment section in middle
+" when PyCharms sees the /* it'll create the */ when you hit Enter to create a new line
+:inoremap @ssep /*<Space><Esc>118a-<Esc>a<Enter><Esc>118a-<Esc>a<Esc>J0d^O<Esc>0i
