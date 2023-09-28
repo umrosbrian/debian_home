@@ -249,7 +249,7 @@ case $HN in
         alias projects="userfolder ; cd projects"
         alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
         #alias pycharm="bash /home/rosbrian/PyCharm/pycharm-2022.3.2/bin/pycharm.sh"
-        alias xferlog="tail -F /app/apps/magpy_users/xfer.log"
+        alias jobslog="tail -F /app/apps/magpy_users/*jobs_loop.log"
         ;;
     omenubuntu)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"

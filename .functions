@@ -535,3 +535,8 @@ fingerprints () {
         ssh-keygen -l -f "$public_key_file"
     done
 }
+
+killJobsLoop () {
+    ps -ef | grep jobs_loop
+}
+
