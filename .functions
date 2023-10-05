@@ -539,7 +539,7 @@ fingerprints () {
 killJobs () {
     if [[ $(ps -ef | grep "$JOBS_PID" | grep python) ]]
         then echo "killing PID $JOBS_PID"
-        kill "$JOBS_PID"
+        sudo kill "$JOBS_PID"
     else 
         echo 'PID not found'
     fi
