@@ -537,6 +537,23 @@ fingerprints () {
 }
 
 killJobsLoop () {
-    ps -ef | grep jobs_loop
+    if [[ $(ps -ef | grep "$JOBS_PID" | grep python) ]]
+        then echo "killing PID $JOBS_PID"
+        kill "$JOBS_PID"
+    else 
+        echo 'PID not found'
+    fi
 }
 
+jobsLoopStatus () {
+    if [[ $(ps -ef | grep "$JOBS_PID" | grep python) ]]
+        then echo "running as PID $JOBS_PID"
+    else 
+        echo 'PID not found'
+    fi
+}
+
+jobsLog () {
+    echo "***Ctrl + C to stop viewing log file***"
+    tail -F /app/apps/magpy_users/*jobs_loop.log
+}
