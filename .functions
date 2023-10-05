@@ -536,7 +536,7 @@ fingerprints () {
     done
 }
 
-killJobsLoop () {
+killJobs () {
     if [[ $(ps -ef | grep "$JOBS_PID" | grep python) ]]
         then echo "killing PID $JOBS_PID"
         kill "$JOBS_PID"
@@ -545,7 +545,7 @@ killJobsLoop () {
     fi
 }
 
-jobsLoopStatus () {
+jobsStatus () {
     if [[ $(ps -ef | grep "$JOBS_PID" | grep python) ]]
         then echo "running as PID $JOBS_PID"
     else 
