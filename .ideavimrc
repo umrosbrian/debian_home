@@ -13,6 +13,8 @@ nnoremap <leader>clp ^i# <Esc>
 nnoremap <leader>clh ^i<!--<Esc>$a--><Esc>
 "comment jinja line
 nnoremap <leader>clj ^i{# <Esc>$a #}<Esc>x
+"comment matlab line
+nnoremap <leader>clm ^i% <Esc>
 
 "uncomment sql line
 nnoremap <leader>uls :s/^\([[:space:]]*\)\(--\)/\1<CR>
@@ -22,6 +24,8 @@ nnoremap <leader>ulp :s/^\([[:space:]]*\)\(#\)/\1<CR>hx
 nnoremap <leader>ulh :s/<!--//<CR>:s/-->//<CR>
 "uncomment jinja line
 nnoremap <leader>ulj :s/{# //<CR>:s/ #}//<CR>
+"uncomment matlab line
+nnoremap <leader>ulm :s/^\([[:space:]]*\)\(%\)/\1<CR>hx
 
 
 "highlight a commented line in order for Ctrl + Return to be hit to execute it
@@ -47,7 +51,7 @@ nnoremap <leader>ucbs G:'t,.s/^--//<CR>'t
 nnoremap <leader>ucbp G:'t,.s/^#//<CR>'t
 
 "indent a python block...move cursor to first line, type 'mt' to set a mark, type the last line number, execute the shortcut
-nnoremap <leader>ib G:'t,.s/^/    /<CR>
+nnoremap <leader>ib G:'t,.s/^/    /<CR>'t
 "unindent a python block...move cursor to first line, type 'mt' to set a mark, type the last line number, execute the shortcut
 nnoremap <leader>uib G:'t,.s/^    //<CR>
 
