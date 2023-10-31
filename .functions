@@ -387,6 +387,9 @@ mountPi8TB () {
         mini\.local)
             mount -t smbfs //pi@192.168.1.100/pi8TB ~/pi8TB
             ;;
+        mini\.home)
+            mount -t smbfs //pi@192.168.1.100/pi8TB ~/pi8TB
+            ;;
         mswa0354\.home)
             mount -t smbfs //pi@192.168.1.100/pi8TB ~/pi8TB
             ;;
@@ -536,7 +539,24 @@ fingerprints () {
     done
 }
 
-killJobsLoop () {
-    ps -ef | grep jobs_loop
+killJobs () {
+    if [[ $(ps -ef | grep "$JOBS_PID" | grep python) ]]
+        then echo "killing PID $JOBS_PID"
+        sudo kill "$JOBS_PID"
+    else 
+        echo 'PID not found'
+    fi
 }
 
+jobsStatus () {
+    if [[ $(ps -ef | grep "$JOBS_PID" | grep python) ]]
+        then echo "running as PID $JOBS_PID"
+    else 
+        echo 'PID not found'
+    fi
+}
+
+jobsLog () {
+    echo "***Ctrl + C to stop viewing log file***"
+    tail -F /app/apps/magpy_users/*jobs_loop.log
+}
