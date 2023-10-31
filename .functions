@@ -409,21 +409,21 @@ unmountNetworkDrives () {
 mountNetworkDrives () {
     # On Debian, install cifs-utils
     case $HN in
-        mswa0353\.ddns\.med\.umich\.edu)
-            mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
-            mount -t smbfs //10.31.192.39/Shared3/Surgery-ICAM ~/y
-            mount -t smbfs //10.30.219.143/rosbrian ~/h
-            # odd that a space is handled with a %20 rather than a \ escaped space
-            mount -t smbfs //10.30.219.143/Shared2/Surg-ICAM/ICAM%20Internal ~/t
-            ;;
-        mswa0354*)
-            # I'm currently mounting Shared3 in /Volumes for MATLAB
-            #mount -t smbfs //corefs2.med.umich.edu/Shared3/Surg-MAG/users/rosbrian ~/z
-            #mount -t smbfs //corefs2.med.umich.edu/Shared3/Surgery-ICAM ~/y
-            mount -t smbfs //10.30.219.143/rosbrian ~/h
-            # odd that a space is handled with a %20 rather than a \ escaped space
-            mount -t smbfs //10.30.219.143/Shared2/Surg-ICAM/ICAM%20Internal ~/t
-            ;;
+#        mswa0353\.ddns\.med\.umich\.edu)
+#            mount -t smbfs //10.31.192.39/Shared3/Surg-MAG/users/rosbrian ~/z
+#            mount -t smbfs //10.31.192.39/Shared3/Surgery-ICAM ~/y
+#            mount -t smbfs //10.30.219.143/rosbrian ~/h
+#            # odd that a space is handled with a %20 rather than a \ escaped space
+#            mount -t smbfs //10.30.219.143/Shared2/Surg-ICAM/ICAM%20Internal ~/t
+#            ;;
+#        mswa0354*)
+#            # I'm currently mounting Shared3 in /Volumes for MATLAB
+#            #mount -t smbfs //corefs2.med.umich.edu/Shared3/Surg-MAG/users/rosbrian ~/z
+#            #mount -t smbfs //corefs2.med.umich.edu/Shared3/Surgery-ICAM ~/y
+#            mount -t smbfs //10.30.219.143/rosbrian ~/h
+#            # odd that a space is handled with a %20 rather than a \ escaped space
+#            mount -t smbfs //10.30.219.143/Shared2/Surg-ICAM/ICAM%20Internal ~/t
+#            ;;
         webservervm)
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surg-MAG ~/z
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3/Surgery-ICAM ~/y
@@ -440,14 +440,14 @@ mountNetworkDrives () {
         pop-os)
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3 /mnt/Shared3
             ;;
-        dgs-ap-ps1a)
-            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs2.med.umich.edu/Shared3 /mnt/Shared3
-            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs.med.umich.edu/Shared2/Surg-ICAM/ /mnt/t
-            ;;
-        omenubuntu)
-            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs2.med.umich.edu/Shared3 /mnt/Shared3
-            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs.med.umich.edu/Shared2/Surg-ICAM/ /mnt/t
-            ;;
+#        dgs-ap-ps1a)
+#            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs2.med.umich.edu/Shared3 /mnt/Shared3
+#            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs.med.umich.edu/Shared2/Surg-ICAM/ /mnt/t
+#            ;;
+#        omenubuntu)
+#            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs2.med.umich.edu/Shared3 /mnt/Shared3
+#            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs.med.umich.edu/Shared2/Surg-ICAM/ /mnt/t
+#            ;;
     esac
 } 
 
