@@ -400,6 +400,7 @@ unmount8TbDrive () {
 }
 
 spinDown8TB () { #args: none
+  read -p "Make sure that you've unmounted the drive from clients.  Hit Enter" foo
   cd
   sudo hdparm -y /dev/sda1
 }
