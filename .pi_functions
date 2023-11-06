@@ -400,6 +400,7 @@ unmount8TbDrive () {
 }
 
 spinDown8TB () { #args: none
+  cd
   sudo hdparm -y /dev/sda1
 }
 
