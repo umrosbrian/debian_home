@@ -166,7 +166,6 @@ case $HN in
         alias inboxes="cd /Volumes/Shared3/Surgery-ICAM/SAHM/inboxes"
         alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
         alias ssh353="ssh rosbrian@MSWA0353.ddns.med.umich.edu"
-        alias vnc353="ssh -L5999:127.0.0.1:5900 -N -f -l rosbrian MSWA0353.ddns.med.umich.edu ; open vnc://localhost:5999"  # found this at https://discussions.apple.com/thread/8060722
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
         alias sshmini="ssh rosbrian@192.168.1.102"
         alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
