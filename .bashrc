@@ -171,7 +171,10 @@ case $HN in
         alias ssh353="ssh rosbrian@MSWA0353.ddns.med.umich.edu"
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
         alias sshmini="ssh rosbrian@192.168.1.102"
-        alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
+        alias sshrhvm1="ssh rosbrian@dgs-ap-ps1a"
+        alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
+        alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
+        alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
         alias sshpi="ssh pi@192.168.1.100"
         alias sshicamlinux="ssh rosbrian@icamlinux.surg.med.umich.edu"  # Use the 99 level-2 password
         alias sshbizon="ssh rosbrian@dl.ddns.med.umich.edu"
