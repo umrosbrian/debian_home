@@ -145,7 +145,10 @@ case $HN in
         export PATH="$PATH:/Volumes/Shared3/Surg-MAG/users/rosbrian/python/scripts"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         alias userfolder="cd /Volumes/Shared3/Surg-MAG/users/rosbrian"
-        alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
+        alias sshrhvm1="ssh rosbrian@dgs-ap-ps1a"
+        alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
+        alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
+        alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
         alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838

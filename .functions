@@ -559,10 +559,9 @@ jobsLog () {
     tail -F /app/apps/magpy_users/*jobs_loop.log
 }
 
+#vnc353 () {
+#    # found this at https://discussions.apple.com/thread/8060722
+#    echo "Enter the username and password in the Screen Sharing window."
+#    ssh -L5999:127.0.0.1:5900 -N -f -l rosbrian MSWA0353.ddns.med.umich.edu open vnc://localhost:5999
+#}
 
-vnc353 () {
-    # found this at https://discussions.apple.com/thread/8060722
-    echo "Enter the username and password in the Screen Sharing window."
-    ssh -L5999:127.0.0.1:5900 -N -f -l rosbrian MSWA0353.ddns.med.umich.edu
-    open vnc://localhost:5999
-}
