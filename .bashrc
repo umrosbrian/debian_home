@@ -248,7 +248,7 @@ case $HN in
     ubuntuvm)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         ;;
-    dgs-ap-ps1a)
+    dgs-ap-ps*a)
         export TERM=xterm
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window xfer"
         export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/magpy/scripts"

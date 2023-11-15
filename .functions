@@ -49,7 +49,7 @@ query () {
   #queryResults=$(PGPASSWORD=changethis psql -t -h pgicam-prod-db.umms.med.umich.edu -U rosbrian sahmdb -c "$sqlString" 2> >(tee -a sql_log >&2))
   #queryResults=$(PGPASSWORD=postgres psql -t -h localhost -U postgres darterdb -c "$sqlString" 2> >(tee -a sql_log >&2))
   case $HN in 
-    dgs-ap-ps1a)
+    dgs-ap-ps*a)
       queryResults=$(psql -t -h icamprddb.med.umich.edu -p 4326 -U icammatlabuser sahmdb -c "$sqlString" 2> >(tee -a sql_log >&2))
       ;;
     *)
@@ -327,7 +327,7 @@ actVE () {
             source /home/imgexcom/virtualenv/venv/3.9/bin/activate
             echo "/home/imgexcom/venv activated"
             ;;
-        dgs-ap-ps1a)
+        dgs-ap-ps*a)
             source ~/.virtualenvs/magpy_remote/bin/activate
             echo "magpy_remote activated"
             ;;
