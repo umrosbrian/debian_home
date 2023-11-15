@@ -167,3 +167,7 @@ nnoremap <leader>uss iselect<Enter>from sahm.umpirecases uc<Enter>join sahm.stud
 " print a C style separator with comment section in middle
 " when PyCharms sees the /* it'll create the */ when you hit Enter to create a new line
 :inoremap @ssep /*<Space><Esc>118a-<Esc>a<Enter><Esc>118a-<Esc>a<Esc>J0d^O<Esc>0i
+
+" assign a dict that's an argument to a SA.conn.execute() to a variable `v`
+nnoremap @dtv 0Ov = <Esc>j/dict<CR>df)iv<Esc>kp/execute<CR>
+
