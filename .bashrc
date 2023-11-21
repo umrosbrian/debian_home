@@ -256,6 +256,7 @@ case $HN in
         alias projects="userfolder ; cd projects"
         alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
         #alias pycharm="bash /home/rosbrian/PyCharm/pycharm-2022.3.2/bin/pycharm.sh"
+        alias matlab="/app/apps/magpy_users/MATLAB/2023b/bin/matlab"
         ;;
     omenubuntu)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
