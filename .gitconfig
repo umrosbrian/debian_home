@@ -1,7 +1,0 @@
-# This is Git's per-user configuration file.
-[user]
-	name = rosbrian
-	email = rosbrian@umich.edu
-# Please adapt and uncomment the following lines:
-#	name = rosbrian
-#	email = rosbrian@dgs-ap-ps2a.med.umich.edu
