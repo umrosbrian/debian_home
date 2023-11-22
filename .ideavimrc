@@ -171,3 +171,4 @@ nnoremap <leader>uss iselect<Enter>from sahm.umpirecases uc<Enter>join sahm.stud
 " assign a dict that's an argument to a SA.conn.execute() to a variable `v`
 nnoremap @dtv 0Ov = <Esc>j/dict<CR>df)iv<Esc>kp/execute<CR>
 
+nnoremap @cpi $Jxi<CR><Esc>

@@ -4,7 +4,9 @@ Chances are, you're setting up a new machine.  See
 [make a SSH key on your machine](https://imgexch.com/web/computer/git.php#make-a-ssh-key-on-your-machine) and the 
 following
 [add the SSH key to your GitHub account](https://imgexch.com/web/computer/git.php#add-the-ssh-key-to-your-github-account).
-
+The first time you perform a CLI operation involving GitHub you'll be provided their server's key fingerprint.  Check 
+out [GitHub's SSH key fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints) 
+to verify that you're connection to their server.
 
 # cloning to a local repo
 
