@@ -1,4 +1,14 @@
- cloning to a local repo
+# adding SSH key to GitHub
+
+Chances are, you're setting up a new machine.  See 
+[make a SSH key on your machine](https://imgexch.com/web/computer/git.php#make-a-ssh-key-on-your-machine) and the 
+following
+[add the SSH key to your GitHub account](https://imgexch.com/web/computer/git.php#add-the-ssh-key-to-your-github-account).
+The first time you perform a CLI operation involving GitHub you'll be provided their server's key fingerprint.  Check 
+out [GitHub's SSH key fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints) 
+to verify that you're connection to their server.
+
+# cloning to a local repo
 
 CD to your home directory and issue `git clone https://github.com/umrosbrian/debian_home` or `git clone git@github.com:umrosbrian/debian_home.git` if you have a SSH public key on Github.  You'll need to then move all of the contents of the `debian_home` directory into the home directory.  You can do this by issuing the bash commands `find debian_home -mindepth 1 -maxdepth 1 -exec mv '{}' . \; ; rmdir debian_home`.  You'll probably want to issue `. ~/.bashrc`.
 

@@ -9,11 +9,24 @@ set noerrorbells " This is for PyCharm on Windows
 nnoremap <leader>cls ^i--<Esc>
 "comment python line
 nnoremap <leader>clp ^i# <Esc>
+"comment html line
+nnoremap <leader>clh ^i<!--<Esc>$a--><Esc>
+"comment jinja line
+nnoremap <leader>clj ^i{# <Esc>$a #}<Esc>x
+"comment matlab line
+nnoremap <leader>clm ^i% <Esc>
 
 "uncomment sql line
 nnoremap <leader>uls :s/^\([[:space:]]*\)\(--\)/\1<CR>
 "uncomment python line
 nnoremap <leader>ulp :s/^\([[:space:]]*\)\(#\)/\1<CR>hx
+"uncomment html line
+nnoremap <leader>ulh :s/<!--//<CR>:s/-->//<CR>
+"uncomment jinja line
+nnoremap <leader>ulj :s/{# //<CR>:s/ #}//<CR>
+"uncomment matlab line
+nnoremap <leader>ulm :s/^\([[:space:]]*\)\(%\)/\1<CR>hx
+
 
 "highlight a commented line in order for Ctrl + Return to be hit to execute it
 nnoremap <leader>hcl 0ll<C-v>$
@@ -38,7 +51,7 @@ nnoremap <leader>ucbs G:'t,.s/^--//<CR>'t
 nnoremap <leader>ucbp G:'t,.s/^#//<CR>'t
 
 "indent a python block...move cursor to first line, type 'mt' to set a mark, type the last line number, execute the shortcut
-nnoremap <leader>ib G:'t,.s/^/    /<CR>
+nnoremap <leader>ib G:'t,.s/^/    /<CR>'t
 "unindent a python block...move cursor to first line, type 'mt' to set a mark, type the last line number, execute the shortcut
 nnoremap <leader>uib G:'t,.s/^    //<CR>
 
@@ -143,10 +156,19 @@ nnoremap <leader>wsb G:'t,.s/^/         /<CR>$a"""<Esc>xxxa)<Esc>'tOt = text("""
 :inoremap IR importlib.reload()<Esc>2ji
 
 " print an f-string's expression prior to that expression
-:inoremap @pe <Esc>vi{yhPa:<Esc>f}a
+:inoremap @pe <Esc>vi{yhPa: <Esc>f}a
 
 " print the typical umpirecases, study, study_tags query
 nnoremap <leader>uss iselect<Enter>from sahm.umpirecases uc<Enter>join sahm.study s on s.umpireid = uc.umpireid<Enter>join sahm.study_tags st on s.studyid = st.studyid and tagid = 3 and tag_contents = ''<Esc>2ji
 
 " print a PEP-compliant separator with comment section in middle
-:inoremap @sep #<Space><Esc>118a-<Esc>a<Enter>#<Enter>#<Space><Esc>118a-<Esc>k$a<Space>
+:inoremap @psep #<Space><Esc>118a-<Esc>a<Enter>#<Enter>#<Space><Esc>118a-<Esc>k$a<Space>
+
+" print a C style separator with comment section in middle
+" when PyCharms sees the /* it'll create the */ when you hit Enter to create a new line
+:inoremap @ssep /*<Space><Esc>118a-<Esc>a<Enter><Esc>118a-<Esc>a<Esc>J0d^O<Esc>0i
+
+" assign a dict that's an argument to a SA.conn.execute() to a variable `v`
+nnoremap @dtv 0Ov = <Esc>j/dict<CR>df)iv<Esc>kp/execute<CR>
+
+nnoremap @cpi $Jxi<CR><Esc>

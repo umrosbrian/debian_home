@@ -145,11 +145,16 @@ case $HN in
         export PATH="$PATH:/Volumes/Shared3/Surg-MAG/users/rosbrian/python/scripts"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         alias userfolder="cd /Volumes/Shared3/Surg-MAG/users/rosbrian"
-        alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
+        alias sshrhvm1="ssh rosbrian@dgs-ap-ps1a"
+        alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
+        alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
+        alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
         alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
         alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
         alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
-        alias rdpomen="xfreerdp +clipboard /v:omenubuntu.ddns.med.umich.edu /u:rosbrian /size:1900x1000"
+        # See https://blindauer.net/dotclear/post/2015/07/23/Efficient-Remote-Desktop-on-linux regarding the use of \
+        # the RemoteFX codec, which is enabled with `/rfx`
+        alias rdpomen="xfreerdp +clipboard /v:omenubuntu.ddns.med.umich.edu /u:rosbrian /size:1900x1000 /rfx"
         export PGDATABASE=sahmdb
         export PGHOST=icamprddb.med.umich.edu
         export PGPORT=4326
@@ -164,10 +169,12 @@ case $HN in
         alias inboxes="cd /Volumes/Shared3/Surgery-ICAM/SAHM/inboxes"
         alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
         alias ssh353="ssh rosbrian@MSWA0353.ddns.med.umich.edu"
-        alias vnc353="ssh -L5999:127.0.0.1:5900 -N -f -l rosbrian MSWA0353.ddns.med.umich.edu ; open vnc://localhost:5999"  # found this at https://discussions.apple.com/thread/8060722
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
         alias sshmini="ssh rosbrian@192.168.1.102"
-        alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
+        alias sshrhvm1="ssh rosbrian@dgs-ap-ps1a"
+        alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
+        alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
+        alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
         alias sshpi="ssh pi@192.168.1.100"
         alias sshicamlinux="ssh rosbrian@icamlinux.surg.med.umich.edu"  # Use the 99 level-2 password
         alias sshbizon="ssh rosbrian@dl.ddns.med.umich.edu"
@@ -178,8 +185,9 @@ case $HN in
         alias rdpgrace="xfreerdp +clipboard /v:MSW00076.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
         alias rdpjune="xfreerdp +clipboard /v:MSW01266.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
         alias rdpcarol="xfreerdp +clipboard /v:MSW01837.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
-        alias rdprhvm="xfreerdp +clipboard /v:dgs-ap-ps1a /u:rosbrian /size:1900x1000 /bpp:16"
-        alias rdpomen="xfreerdp +clipboard /v:omenubuntu.ddns.med.umich.edu /u:rosbrian /size:1900x1000 /bpp:16"
+        alias rdprhvm="xfreerdp +clipboard /v:dgs-ap-ps1a /u:rosbrian /size:1900x1000 /bpp:16 /rfx"
+        alias rdprhvm2="xfreerdp +clipboard /v:dgs-ap-ps2a /u:rosbrian /size:1900x1000 /bpp:16 /rfx"
+        alias rdpomen="xfreerdp +clipboard /v:omenubuntu.ddns.med.umich.edu /u:rosbrian /size:1900x1000 /rfx"
         alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
         ;;
@@ -241,15 +249,17 @@ case $HN in
     ubuntuvm)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         ;;
-    dgs-ap-ps1a)
+    dgs-ap-ps*a)
         export TERM=xterm
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window xfer"
-        export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/magpy/scripts"
+        export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/magpy/scripts:/app/apps/magpy_users/pycharm-2023.2.5/bin:/app/apps/magpy_users/MATLAB/2023b/bin"
         alias userfolder="cd /mnt/Shared3/Surg-MAG/users/rosbrian"
         alias projects="userfolder ; cd projects"
         alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
         #alias pycharm="bash /home/rosbrian/PyCharm/pycharm-2022.3.2/bin/pycharm.sh"
-        alias xferlog="tail -F /app/apps/magpy_users/xfer.log"
+        #alias matlab="/app/apps/magpy_users/MATLAB/2023b/bin/matlab"
+        # should only be executed from the MATE terminal as it uses X
+        alias mudir="cd /app/apps/magpy_users"
         ;;
     omenubuntu)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
