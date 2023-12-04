@@ -298,3 +298,19 @@ if exists("+showtabline")
     set showtabline=1
     highlight link TabNum Special
 endif
+
+" " -------------------Markdown to HTML conversion -----------------------
+" " enclose current line with ul elements
+"     " remove any non-word/number at start of line
+"     " add <ul> at start of line
+"     " add </ul> at end of line
+" noremap ule :s/^[^a-zA-Z0-9]*//g<CR>0i<ul><Esc>$a</ul><Esc>0
+" 
+" " enclose current line with li elements
+"     " remove any non-word/number at start of line
+"     " add <li> at start of line
+"     " add </li> at end of line
+" noremap lie :s/^[^a-zA-Z0-9]*//g<CR>0i<li><Esc>$a</li><Esc>)0
+" 
+" " indent current line
+" noremap il 0i<tab><Esc>
