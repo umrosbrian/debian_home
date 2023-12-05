@@ -562,7 +562,7 @@ vnc353 () {
 
 jobsLog () {
     echo "***Ctrl + C to stop viewing log file***"
-    tail -F /app/apps/magpy_users/jobs_loop-normal.log
+    tail -F /app/apps/magpy_users/magpy/logs/jobs_loop-normal.log
 }
 
 flaskPID () {
