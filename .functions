@@ -565,4 +565,11 @@ jobsLog () {
     tail -F /app/apps/magpy_users/*jobs_loop.log
 }
 
+flaskPID () {
+    ps -ef | grep flask | grep -v grep
+}
+
+jobsPID () {
+    ps -ef | grep jobs_loop | grep -v grep
+}
 
