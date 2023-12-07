@@ -160,6 +160,7 @@ case $HN in
         export PGPORT=4326
         export PGUSER=rosbrian
         export PGOPTIONS=--search_path=rosbrian,sahm,sven,imstore
+        # Run the flask server locally while connected to the dev database
         ;;
     mswa0354*)# the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
         export PATH="$PATH:/Users/rosbrian"
@@ -190,6 +191,7 @@ case $HN in
         alias rdpomen="xfreerdp +clipboard /v:omenubuntu.ddns.med.umich.edu /u:rosbrian /size:1900x1000 /rfx"
         alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
+        alias devflask="FLASK_APP=start_server.py FLASK_DEBUG=true FLASK_DB_SERVER='dev' flask run"
         ;;
     webservervm)
         alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
