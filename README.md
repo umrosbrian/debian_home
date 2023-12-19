@@ -10,7 +10,7 @@ to verify that you're connection to their server.
 
 # cloning to a local repo
 
-CD to your home directory and issue `git clone https://github.com/umrosbrian/debian_home` or `git clone git@github.com:umrosbrian/debian_home.git` if you have a SSH public key on Github.  You'll need to then move all of the contents of the `debian_home` directory into the home directory.  You can do this by issuing the bash commands `find debian_home -mindepth 1 -maxdepth 1 -exec mv '{}' . \; ; rmdir debian_home`.  You'll probably want to issue `. ~/.bashrc`.
+CD to your home directory and issue `git clone https://github.com/umrosbrian/debian_home` or `git clone git@github.com:umrosbrian/debian_home.git` if you have a SSH public key on Github.  Issue `~/debian_home/prep_repo.sh` to move all of the contents of the `debian_home` directory into the home directory and delete the `debian_home` directory.  You'll probably want to issue `. ~/.bashrc`.
 
 # working in a local repo
 
