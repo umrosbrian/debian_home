@@ -266,6 +266,9 @@ case $HN in
     omenubuntu)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         ;;
+    darter)
+        alias sshimgexch="ssh -p 7822 brian@imgexch.com"
+        ;;
 esac
 
 IFS=$'\n'
