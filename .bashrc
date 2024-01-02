@@ -267,6 +267,9 @@ case $HN in
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
         ;;
+    darter)
+        alias sshimgexch="ssh -p 7822 brian@imgexch.com"
+        ;;
 esac
 
 IFS=$'\n'
