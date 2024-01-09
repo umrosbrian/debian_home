@@ -565,6 +565,10 @@ jobsLog () {
     tail -F /app/apps/magpy_users/magpy/logs/jobs_loop-normal.log
 }
 
+jobsErrorLog () {
+    less /app/apps/magpy_users/magpy/logs/jobs_loop-error.log
+}
+
 flaskLog () {
     echo "***Ctrl + C to stop viewing log file***"
     tail -F /app/apps/magpy_users/magpy/logs/web_app-normal.log
