@@ -254,7 +254,7 @@ case $HN in
     dgs-ap-ps*a)
         export TERM=xterm
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window xfer"
-        export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/magpy/scripts:/app/apps/magpy_users/pycharm-2023.2.5/bin:/app/apps/magpy_users/MATLAB/2023b/bin"
+        export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/magpy/scripts:/app/apps/magpy_users/pycharm-2023.2.5/bin:/app/apps/magpy_users/MATLAB/2023b/bin:/app/apps/magpy_users/pycharm-2023.3.1/bin"
         alias userfolder="cd /mnt/Shared3/Surg-MAG/users/rosbrian"
         alias projects="userfolder ; cd projects"
         alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
@@ -265,6 +265,10 @@ case $HN in
         ;;
     omenubuntu)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
+        alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
+        ;;
+    darter)
+        alias sshimgexch="ssh -p 7822 brian@imgexch.com"
         ;;
 esac
 
