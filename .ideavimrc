@@ -120,7 +120,7 @@ nnoremap <leader>wsb G:'t,.s/^/         /<CR>$a"""<Esc>xxxa)<Esc>'tOt = text("""
 :inoremap RB rosbrian.
 
 "print 'rdw_userspace.'
-:inoremap RU rdw_userspace.rosbrian.
+":inoremap RU rdw_userspace.rosbrian.
 
 "print 'rdw_views.'
 :inoremap RV rdw_views.dbo.
