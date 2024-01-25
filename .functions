@@ -538,17 +538,10 @@ fingerprints () {
 }
 
 killJobs () {
-    if [[ $(ps -ef | grep "$JOBS_PID" | grep python) ]]
-        then echo "killing PID $JOBS_PID"
-        sudo kill "$JOBS_PID"
-    else 
-        echo 'PID not found'
-    fi
-}
-
-jobsStatus () {
-    if [[ $(ps -ef | grep "$JOBS_PID" | grep python) ]]
-        then echo "running as PID $JOBS_PID"
+    jobsPID=$(ps -ef | grep jobs_loop | grep 'sudo nohup' | awk '{print $2}')
+    if [ -n $jobsPID ]
+        then echo "killing PID $jobsPID"
+        sudo kill $jobsPID
     else 
         echo 'PID not found'
     fi
@@ -563,6 +556,10 @@ vnc353 () {
 jobsLog () {
     echo "***Ctrl + C to stop viewing log file***"
     tail -F /app/apps/magpy_users/magpy/logs/jobs_loop-normal.log
+}
+
+jobsErrorLog () {
+    less /app/apps/magpy_users/magpy/logs/jobs_loop-error.log
 }
 
 flaskLog () {
