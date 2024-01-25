@@ -444,10 +444,10 @@ mountNetworkDrives () {
 #            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs2.med.umich.edu/Shared3 /mnt/Shared3
 #            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs.med.umich.edu/Shared2/Surg-ICAM/ /mnt/t
 #            ;;
-#        omenubuntu)
-#            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs2.med.umich.edu/Shared3 /mnt/Shared3
-#            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs.med.umich.edu/Shared2/Surg-ICAM/ /mnt/t
-#            ;;
+        omenubuntu)
+            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs2.med.umich.edu/Shared3 /mnt/Shared3
+            sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //corefs.med.umich.edu/Shared2/Surg-ICAM/ /mnt/t
+            ;;
     esac
 } 
 

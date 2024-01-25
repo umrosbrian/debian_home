@@ -264,6 +264,7 @@ case $HN in
         alias mudir="cd /app/apps/magpy_users"
         ;;
     omenubuntu)
+        export PATH="$PATH:/home/rosbrian/bin:/home/rosbrian/PyCharm/bin"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
         ;;
