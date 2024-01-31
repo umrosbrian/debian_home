@@ -267,6 +267,7 @@ case $HN in
         export PATH="$PATH:/home/rosbrian/bin:/home/rosbrian/PyCharm/bin"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
+        alias pycharm="nohup /home/rosbrian/PyCharm/bin/pycharm.sh & &> /dev/null"
         ;;
     darter)
         alias sshimgexch="ssh -p 7822 brian@imgexch.com"
