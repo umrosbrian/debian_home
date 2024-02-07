@@ -126,8 +126,8 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 #change colors that ls displays to make it more readable on tmux's white background
 #found this at https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
-LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS #makes executables purple
-LS_COLORS=$LS_COLORS:'fi=0;32:' ; export LS_COLORS #makes files green
+#LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS #makes executables purple
+#LS_COLORS=$LS_COLORS:'fi=0;32:' ; export LS_COLORS #makes files green
 
 # User specific aliases and functions
 alias killtmux="tmux kill-server"
@@ -266,9 +266,16 @@ case $HN in
         alias mudir="cd /app/apps/magpy_users"
         ;;
     omenubuntu)
-        export PATH="$PATH:/home/rosbrian/bin:/home/rosbrian/PyCharm/bin"
+        export PATH="$PATH:/home/rosbrian/bin"
+        alias userfolder="cd /mnt/Shared3/Surg-MAG/users/rosbrian"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
+        alias pycharm="nohup /home/rosbrian/PyCharm/bin/pycharm.sh &> /dev/null &"
+        alias matlab="nohup /home/rosbrian/MATLAB/2023b/bin/matlab -desktop &> /dev/null &"
+        alias sshrhvm1="ssh rosbrian@dgs-ap-ps1a"
+        alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
+        alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
+        alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
         ;;
     darter)
         alias sshimgexch="ssh -p 7822 brian@imgexch.com"
