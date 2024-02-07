@@ -270,6 +270,10 @@ case $HN in
         alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
         alias pycharm="nohup /home/rosbrian/PyCharm/bin/pycharm.sh &> /dev/null &"
         alias matlab="nohup /home/rosbrian/MATLAB/2023b/bin/matlab -desktop &> /dev/null &"
+        alias sshrhvm1="ssh rosbrian@dgs-ap-ps1a"
+        alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
+        alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
+        alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
         ;;
     darter)
         alias sshimgexch="ssh -p 7822 brian@imgexch.com"
