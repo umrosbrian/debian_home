@@ -274,6 +274,7 @@ case $HN in
         alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
         alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
         alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
+        alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
         ;;
     darter)
         alias sshimgexch="ssh -p 7822 brian@imgexch.com"
