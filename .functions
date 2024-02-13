@@ -575,11 +575,12 @@ jobsPID () {
     ps -ef | grep jobs_loop | grep -v grep
 }
 
-jobsPIDS {} (
-machine_nums=( 1 2 3 4 )
-for machine_num in ${machine_nums[@]}
-    do
-    echo "${machine_num}:"
-    ssh rosbrian@dgs-ap-ps"${machine_num}"a ps -ef | grep jobs_loop
-done)
+jobsPIDs () {
+    machine_nums=( 1 2 3 4 )
+    for machine_num in ${machine_nums[@]}
+        do
+        echo "${machine_num}:"
+        ssh rosbrian@dgs-ap-ps"${machine_num}"a ps -ef | grep jobs_loop
+    done
+}
 
