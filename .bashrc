@@ -260,7 +260,7 @@ case $HN in
         alias userfolder="cd /mnt/Shared3/Surg-MAG/users/rosbrian"
         alias projects="userfolder ; cd projects"
         alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
-        #alias pycharm="bash /home/rosbrian/PyCharm/pycharm-2022.3.2/bin/pycharm.sh"
+        alias pycharm="bash /app/apps/magpy_users/pycharm-2023.*/bin/pycharm.sh"
         #alias matlab="/app/apps/magpy_users/MATLAB/2023b/bin/matlab"
         # should only be executed from the MATE terminal as it uses X
         alias mudir="cd /app/apps/magpy_users"
