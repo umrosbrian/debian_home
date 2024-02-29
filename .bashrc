@@ -261,8 +261,7 @@ case $HN in
         alias projects="userfolder ; cd projects"
         alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
         alias pycharm="bash /app/apps/magpy_users/pycharm-2023.*/bin/pycharm.sh"
-        #alias matlab="/app/apps/magpy_users/MATLAB/2023b/bin/matlab"
-        # should only be executed from the MATE terminal as it uses X
+        alias matlab="/app/apps/magpy_users/MATLAB/2023b/bin/matlab"
         alias mudir="cd /app/apps/magpy_users"
         ;;
     omenubuntu)
