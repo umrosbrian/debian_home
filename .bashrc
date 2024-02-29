@@ -256,13 +256,12 @@ case $HN in
     dgs-ap-ps*a)
         export TERM=xterm
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window xfer"
-        export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/magpy/scripts:/app/apps/magpy_users/pycharm-2023.2.5/bin:/app/apps/magpy_users/MATLAB/2023b/bin:/app/apps/magpy_users/pycharm-2023.3.1/bin"
+        export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/magpy/scripts"
         alias userfolder="cd /mnt/Shared3/Surg-MAG/users/rosbrian"
         alias projects="userfolder ; cd projects"
         alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
-        alias pycharm="bash /app/apps/magpy_users/pycharm-2023.*/bin/pycharm.sh"
-        #alias matlab="/app/apps/magpy_users/MATLAB/2023b/bin/matlab"
-        # should only be executed from the MATE terminal as it uses X
+        alias pycharm="nohup /app/apps/magpy_users/pycharm-2023.*/bin/pycharm.sh &> /dev/null &"
+        alias matlab="nohup /app/apps/magpy_users/MATLAB/2023b/bin/matlab -desktop &> /dev/null &"
         alias mudir="cd /app/apps/magpy_users"
         ;;
     omenubuntu)
