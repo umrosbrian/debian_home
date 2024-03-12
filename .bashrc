@@ -280,6 +280,9 @@ case $HN in
     darter)
         alias sshimgexch="ssh -p 7822 brian@imgexch.com"
         ;;
+    Gazelle)
+        alias sshimgexch="ssh -p 7822 brian@imgexch.com"
+        ;;
 esac
 
 IFS=$'\n'
