@@ -270,11 +270,12 @@ case $HN in
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
         alias pycharm="nohup /home/rosbrian/PyCharm/bin/pycharm.sh &> /dev/null &"
-        alias matlab="nohup /mnt/1TB/2023b/bin/matlab -desktop &> /dev/null &"
+        alias matlab="nohup /mnt/1TB/MATLAB/2023b/bin/matlab -desktop &> /dev/null &"
         alias sshrhvm1="ssh rosbrian@dgs-ap-ps1a"
         alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
         alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
         alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
+        alias sshmini="ssh rosbrian@192.168.1.102"
         alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
         ;;
     darter)
