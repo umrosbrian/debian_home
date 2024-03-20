@@ -590,24 +590,24 @@ jobsPIDs () {
 }
 
 
-dStop () {
+dstop () {
     sudo docker stop $1
 }
 
-dRuni () {
+druni () {
     # run interactively
     sudo docker run -it --rm --privileged $1
 }
 
-dRund () {
+drund () {
     # run detached
     sudo docker run -dit --rm --privileged $1
 }
 
-dExec () {
+dexec () {
     sudo docker exec -it $1 bash
 }
 
-dRmi () {
+drmi () {
     sudo docker rmi -f $1
 }

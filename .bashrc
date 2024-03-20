@@ -158,8 +158,8 @@ alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
 alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
 
 # Docker commands
-alias dPs="sudo docker ps"
-alias dImages="sudo docker images"
+alias dps="sudo docker ps"
+alias dimages="sudo docker images"
 
 # set an environmental variable having the hostname since I'll be using it in tests in both this file and in ~/.functions
 export HN=$(hostname | tr -d '\n') # the 'hostname' command appends a newline character to the hostname so in the test I'm removing it
