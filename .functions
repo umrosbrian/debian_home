@@ -459,11 +459,12 @@ appleKeyboard () {
 
 vpnOn () {
   sudo openconnect -b vpn.med.umich.edu
-  case $HN in
-    omenubuntu)
-      sudo mount -a
-      ;;
-  esac
+  # The case statement will execute before the user has provided the password so won't work.
+#  case $HN in
+#    omenubuntu)
+#      sudo mount -a
+#      ;;
+#  esac
 }
 
 vpnOff () {
