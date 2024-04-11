@@ -458,7 +458,9 @@ appleKeyboard () {
 }
 
 vpnOn () {
-  sudo openconnect -b vpn.med.umich.edu
+  /opt/cisco/anyconnect/bin/vpn connect vpn.med.umich.edu
+  #sudo openconnect -b vpn.med.umich.edu
+
   # The case statement will execute before the user has provided the password so won't work.
 #  case $HN in
 #    omenubuntu)
@@ -469,7 +471,8 @@ vpnOn () {
 
 vpnOff () {
   #kill the pid my matching the process name
-  sudo pkill openconnect
+  #sudo pkill openconnect
+  /opt/cisco/anyconnect/bin/vpn disconnect
 }
 
 displaySleep () {
