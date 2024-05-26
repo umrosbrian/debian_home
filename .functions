@@ -404,6 +404,7 @@ unmountNetworkDrives () {
   sudo umount ~/y
   sudo umount ~/t
   sudo umount ~/h
+  sudo umount /mnt/Shared3
 }
 
 mountNetworkDrives () {
@@ -437,7 +438,7 @@ mountNetworkDrives () {
         raspberrypi)
             foo=bar
             ;;
-        pop-os)
+        darter)
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3 /mnt/Shared3
             ;;
 #        dgs-ap-ps1a)
