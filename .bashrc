@@ -222,7 +222,7 @@ case $HN in
     dgs-ap-ps*a)
         export TERM=xterm
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window xfer"
-        export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/repos/magpy/scripts:/app/apps/magpy_users/repos/pyutils/scripts:/app/apps/magpy_users/repos/pacs-qr/scripts:/app/apps/magpy_users/repos/magpy_flask"
+        export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/repos:/app/apps/magpy_users/repos/magpy/scripts:/app/apps/magpy_users/repos/pyutils/scripts:/app/apps/magpy_users/repos/pacs-qr/scripts:/app/apps/magpy_users/repos/magpy_flask"
         alias userfolder="cd /mnt/Shared3/Surg-MAG/users/rosbrian"
         alias projects="userfolder ; cd projects"
         alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"

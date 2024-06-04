@@ -405,6 +405,7 @@ unmountNetworkDrives () {
   sudo umount ~/y
   sudo umount ~/t
   sudo umount ~/h
+  sudo umount /mnt/Shared3
 }
 
 mountNetworkDrives () {
@@ -438,7 +439,7 @@ mountNetworkDrives () {
         raspberrypi)
             foo=bar
             ;;
-        pop-os)
+        darter)
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3 /mnt/Shared3
             ;;
 #        dgs-ap-ps1a)
@@ -459,7 +460,9 @@ appleKeyboard () {
 }
 
 vpnOn () {
-  sudo openconnect -b vpn.med.umich.edu
+  /opt/cisco/anyconnect/bin/vpn connect vpn.med.umich.edu
+  #sudo openconnect -b vpn.med.umich.edu
+
   # The case statement will execute before the user has provided the password so won't work.
 #  case $HN in
 #    omenubuntu)
@@ -470,7 +473,8 @@ vpnOn () {
 
 vpnOff () {
   #kill the pid my matching the process name
-  sudo pkill openconnect
+  #sudo pkill openconnect
+  /opt/cisco/anyconnect/bin/vpn disconnect
 }
 
 displaySleep () {
