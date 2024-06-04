@@ -100,10 +100,11 @@ pickFromList () {
 #this searches $1 for a term then returns both the filename containing a match and the line containing the match
 # Provide a path and optionally the arguments to find as a quoted argument to the function.  E.g. searchFiles 'DirName -type f -name "*\.txt" -o -name "*\.wpd"' MyTerm would search for MyTerm in all .txt and .wpd files within DirName. 
 #it would be really nice to have the grepped match maintain the red coloring...look at the compression fx script for this
+# I'm using --regexp in case the search term starts with a dash.  Otherwise, grep would think the term was an option.
 searchFiles () {
   IFS=$'\n'
   for filename in $(echo "find $1 -type f" | bash)
-  do match=$(grep -i "$2" "$filename")
+  do match=$(grep -i --regexp="$2" "$filename")
     if [ $? -eq 0 ] 
     then
       match=$(echo "$match" | sed 's/^[[:space:]]*//')
