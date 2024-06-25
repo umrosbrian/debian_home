@@ -329,8 +329,8 @@ actVE () {
             echo "/home/imgexcom/venv activated"
             ;;
         dgs-ap-ps*a)
-            source ~/.virtualenvs/magpy_remote/bin/activate
-            echo "magpy_remote activated"
+            source /app/apps/magpy_users/venv/bin/activate
+            echo "/app/apps/magpy_users/venv activated"
             ;;
     esac 
 }
