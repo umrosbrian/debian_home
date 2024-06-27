@@ -637,4 +637,5 @@ pullRepos () {
     git pull
     cd ../pacs-qr
     git pull
+    cd "$cwd"
 }
