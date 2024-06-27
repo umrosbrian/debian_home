@@ -629,3 +629,12 @@ checkBranches () {
     cd "$cwd"
 }
 
+pullRepos () {
+    cwd="$PWD"
+    cd /app/apps/magpy_users/repos/magpy
+    git pull
+    cd ../pyutils
+    git pull
+    cd ../pacs-qr
+    git pull
+}
