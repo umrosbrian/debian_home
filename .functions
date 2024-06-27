@@ -617,3 +617,15 @@ dexec () {
 drmi () {
     sudo docker rmi -f $1
 }
+
+checkBranches () {
+    cwd="$PWD"
+    cd /app/apps/magpy_users/repos/magpy
+    echo "magpy: $(git branch | sed -n '/\*/p')"
+    cd ../pyutils
+    echo "pyutils: $(git branch | sed -n '/\*/p')"
+    cd ../pacs-qr
+    echo "pacs-qr: $(git branch | sed -n '/\*/p')"
+    cd "$cwd"
+}
+
