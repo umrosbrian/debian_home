@@ -182,7 +182,7 @@ case $HN in
         export PGOPTIONS=--search_path=rosbrian,sahm,sven,imstore
         ;;
     mswa0354*)# the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
-        export PATH="$PATH:/Users/rosbrian:/Users/rosbrian/bin:/usr/local/opt/krb5/bin:/usr/local/opt/krb5/sbin;$HOME/.docker/bin"
+        export PATH="$PATH:/Users/rosbrian:/Users/rosbrian/bin:/usr/local/opt/krb5/bin:/usr/local/opt/krb5/sbin:$HOME/.docker/bin:~/PycharmProjects/repos/pyutils/scripts"
         export LDFLAGS="-L/usr/local/opt/krb5/lib"
         export CPPFLAGS="-I/usr/local/opt/krb5/include"
         alias newtmux="tmux new-session \; rename-window vpn-rdp \; new-window \; rename-window vim \; new-window \; rename-window bash \; select-window -t :1"
