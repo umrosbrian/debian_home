@@ -225,7 +225,7 @@ case $HN in
         export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/repos:/app/apps/magpy_users/repos/magpy/scripts:/app/apps/magpy_users/repos/pyutils/scripts:/app/apps/magpy_users/repos/pacs-qr/scripts:/app/apps/magpy_users/repos/magpy_flask"
         alias userfolder="cd /mnt/Shared3/Surg-MAG/users/rosbrian"
         alias projects="userfolder ; cd projects"
-        alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
+        alias inboxes="cd /mnt/SharedX/PACSQR-Inboxes/inboxes"
         alias pycharm="nohup /app/apps/magpy_users/pycharm-2023.*/bin/pycharm.sh &> /dev/null &"
         alias matlab="nohup /app/apps/magpy_users/MATLAB/2023b/bin/matlab -desktop &> /dev/null &"
         alias mudir="cd /app/apps/magpy_users"
