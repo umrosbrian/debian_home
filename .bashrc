@@ -133,6 +133,33 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias killtmux="tmux kill-server"
 alias temp="curl wttr.in/?0" # browse to https://wttr.in/:help to see all the options
 alias weather="curl wttr.in"
+alias sshrhvm1="ssh rosbrian@dgs-ap-ps1a"
+alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
+alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
+alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
+alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
+alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
+alias ssh353="ssh rosbrian@MSWA0353.ddns.med.umich.edu"
+alias sshmini="ssh rosbrian@192.168.1.102"
+#alias sshpi="ssh pi@192.168.1.100"
+alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
+alias sshicamlinux="ssh rosbrian@icamlinux.surg.med.umich.edu"  # Use the 99 level-2 password
+alias sshbizon="ssh rosbrian@dl.ddns.med.umich.edu"
+alias sshomen="ssh rosbrian@omenubuntu.ddns.med.umich.edu"
+alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
+alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
+alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
+alias rdpgrace="xfreerdp +clipboard /v:MSW00076.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
+alias rdpjune="xfreerdp +clipboard /v:MSW01266.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
+alias rdpcarol="xfreerdp +clipboard /v:MSW01837.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
+alias rdprhvm="xfreerdp +clipboard /v:dgs-ap-ps1a /u:rosbrian /size:1900x1000 /bpp:16 /rfx"
+alias rdprhvm2="xfreerdp +clipboard /v:dgs-ap-ps2a /u:rosbrian /size:1900x1000 /bpp:16 /rfx"
+alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
+alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
+
+# Docker commands
+alias dps="sudo docker ps"
+alias dimages="sudo docker images"
 
 # set an environmental variable having the hostname since I'll be using it in tests in both this file and in ~/.functions
 export HN=$(hostname | tr -d '\n') # the 'hostname' command appends a newline character to the hostname so in the test I'm removing it
@@ -145,13 +172,6 @@ case $HN in
         export PATH="$PATH:/Volumes/Shared3/Surg-MAG/users/rosbrian/python/scripts"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         alias userfolder="cd /Volumes/Shared3/Surg-MAG/users/rosbrian"
-        alias sshrhvm1="ssh rosbrian@dgs-ap-ps1a"
-        alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
-        alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
-        alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
-        alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
-        alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
-        alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
         # See https://blindauer.net/dotclear/post/2015/07/23/Efficient-Remote-Desktop-on-linux regarding the use of \
         # the RemoteFX codec, which is enabled with `/rfx`
         alias rdpomen="xfreerdp +clipboard /v:omenubuntu.ddns.med.umich.edu /u:rosbrian /size:1900x1000 /rfx"
@@ -160,91 +180,37 @@ case $HN in
         export PGPORT=4326
         export PGUSER=rosbrian
         export PGOPTIONS=--search_path=rosbrian,sahm,sven,imstore
-        # Run the flask server locally while connected to the dev database
         ;;
     mswa0354*)# the suffix will change from 'local' to 'home' depending upon whether or not VPN is connected
-        export PATH="$PATH:/Users/rosbrian:/Users/rosbrian/bin:/usr/local/opt/krb5/bin:/usr/local/opt/krb5/sbin"
+        export PATH="$PATH:/Users/rosbrian:/Users/rosbrian/bin:/usr/local/opt/krb5/bin:/usr/local/opt/krb5/sbin:$HOME/.docker/bin:~/PycharmProjects/repos/pyutils/scripts:/Users/rosbrian/PycharmProjects/repos/pacs-app-infra/scripts"
         export LDFLAGS="-L/usr/local/opt/krb5/lib"
         export CPPFLAGS="-I/usr/local/opt/krb5/include"
         alias newtmux="tmux new-session \; rename-window vpn-rdp \; new-window \; rename-window vim \; new-window \; rename-window bash \; select-window -t :1"
         alias userfolder="cd /Volumes/Shared3/Surg-MAG/users/rosbrian"
         alias projects="cd /Volumes/Shared3/Surg-MAG/users/rosbrian/projects"
         alias inboxes="cd /Volumes/Shared3/Surgery-ICAM/SAHM/inboxes"
-        alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
-        alias ssh353="ssh rosbrian@MSWA0353.ddns.med.umich.edu"
-        alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
-        alias sshmini="ssh rosbrian@192.168.1.102"
-        alias sshrhvm1="ssh rosbrian@dgs-ap-ps1a"
-        alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
-        alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
-        alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
-        alias sshpi="ssh pi@192.168.1.100"
-        alias sshicamlinux="ssh rosbrian@icamlinux.surg.med.umich.edu"  # Use the 99 level-2 password
-        alias sshbizon="ssh rosbrian@dl.ddns.med.umich.edu"
-        alias sshomen="ssh rosbrian@omenubuntu.ddns.med.umich.edu"
-        alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
-        alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
-        alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
-        alias rdpgrace="xfreerdp +clipboard /v:MSW00076.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
-        alias rdpjune="xfreerdp +clipboard /v:MSW01266.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
-        alias rdpcarol="xfreerdp +clipboard /v:MSW01837.umhs.med.umich.edu /u:rosbrian /size:1900x1000"
-        alias rdprhvm="xfreerdp +clipboard /v:dgs-ap-ps1a /u:rosbrian /size:1900x1000 /bpp:16 /rfx"
-        alias rdprhvm2="xfreerdp +clipboard /v:dgs-ap-ps2a /u:rosbrian /size:1900x1000 /bpp:16 /rfx"
         alias rdpomen="xfreerdp +clipboard /v:omenubuntu.ddns.med.umich.edu /u:rosbrian /size:1900x1000 /rfx"
-        alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
-        alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
         alias devflask="FLASK_APP=start_server.py FLASK_DEBUG=true FLASK_DB_SERVER='dev' flask run"
         ;;
     webservervm)
-        alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
-        alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
         alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
-        alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash \; new-window \; rename-window a2hosting \; new-window -c "~/python/mypkg" \; rename-window python \; split-window -v -c "~/python/mypkg" \; split-window -h -c "~/python/scripts" \; select-pane -U \; split-window -h -c "~/python/scripts" \; select-pane -L \; select-window -t :1"
-        # use an absolute path rather than relying upon expansion of ~ 
-        # set the path to the parent of `mypkg` and put a `__init__.py` within `mypkg`
-        export PYTHONPATH="/home/rosbrian/python"
-        export PATH="$PATH:/home/rosbrian/python/scripts:/home/rosbrian/bin"
-        alias userfolder="cd ~/mini/z/;ls"
         alias startjup="jupyter notebook --no-browser"
-        source /dev/shm/vars
-        alias sshdarter="ssh rosbrian@pop-os"
-        #rm /dev/shm/vars
         ;;
     mini\.*)
-        alias sshimgexch="ssh -p 7822 brian@imgexch.com"
         alias pwrds="vim ~/pwrds.txt"
-        alias sshrhvm="ssh rosbrian@dgs-ap-ps1a"
         alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
-        alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
-        alias mounta2h="sshfs -p 7822 imgexcom@mi3-ss107.a2hosting.com:/home/imgexcom a2h"
         alias userfolder="cd ~/z;ls"
         export PATH="$PATH:~/python/scripts:~/.local/bin/:~/bin/:~/bin/CEUs" # pip3 will be in ~/.local/bin
-        #source /tmp/vars
-        #rm /tmp/vars
-        alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000" # MSW01836
-        alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000" # MSW01837
-        alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000" # MSW01838
-        alias rdpbe="xfreerdp +clipboard /v:DESKTOP-9QA153E /u:rosbrian /size:1900x1000" # MSW01838
+        alias rdpbe="xfreerdp +clipboard /v:DESKTOP-9QA153E /u:rosbrian /size:1900x1000"
         alias newtmux="tmux new-session \; rename-window vpn-rdp \; split-window -v \; resize-pane -U 12\; split-window -v \; resize-pane -U  \; split-window -v \; select-pane -U \; select-pane -U \; select-pane -U \; new-window \; rename-window bash \; select-window -t :1"
-        alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
         ;;
     raspberrypi)
-        alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
         source ~/.pi_functions # has stuff to control the 8TB drive
         ;;
     pop-os)
-        alias mountmini="sshfs rosbrian@192.168.1.102:/Users/rosbrian ~/mini"
-        alias sshvm="ssh -L 8000:localhost:8888 rosbrian@192.168.1.229" # use port forwarding so that when jupyter is running on the vm the attached machine can use it
-        alias ssha2h="ssh -p 7822 imgexcom@mi3-ss107.a2hosting.com"
-        alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
         alias mountVM="sshfs rosbrian@192.168.1.229:/home/rosbrian ~/vm"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
-        alias rdp241="xfreerdp +clipboard /v:10.17.105.241 /u:rosbrian /size:1900x1000"
-        alias rdp242="xfreerdp +clipboard /v:10.17.105.242 /u:rosbrian /size:1900x1000"
-        alias rdp243="xfreerdp +clipboard /v:10.17.105.243 /u:rosbrian /size:1900x1000"
-        alias sshpi="ssh pi@raspberrypi" # use the hostname since I have the pi on the static address of 192.168.1.100 when connected via ethernet but the wi-fi connection is still dynamic
-        alias sshmini="ssh rosbrian@192.168.1.102"
         ;;
     server\.imgexch\.com)
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
@@ -256,10 +222,10 @@ case $HN in
     dgs-ap-ps*a)
         export TERM=xterm
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window xfer"
-        export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/magpy/scripts"
+        export PATH="$PATH:/home/rosbrian/bin:/mnt/Shared3/Surg-MAG/users/rosbrian/python/scripts:/app/apps/magpy_users/repos:/app/apps/magpy_users/repos/magpy/scripts:/app/apps/magpy_users/repos/pyutils/scripts:/app/apps/magpy_users/repos/pacs-qr/scripts:/app/apps/magpy_users/repos/magpy_flask"
         alias userfolder="cd /mnt/Shared3/Surg-MAG/users/rosbrian"
         alias projects="userfolder ; cd projects"
-        alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
+        alias inboxes="cd /mnt/SharedX/PACSQR-Inboxes/inboxes"
         alias pycharm="nohup /app/apps/magpy_users/pycharm-2023.*/bin/pycharm.sh &> /dev/null &"
         alias matlab="nohup /app/apps/magpy_users/MATLAB/2023b/bin/matlab -desktop &> /dev/null &"
         alias mudir="cd /app/apps/magpy_users"
@@ -268,20 +234,14 @@ case $HN in
         export PATH="$PATH:/home/rosbrian/bin"
         alias userfolder="cd /mnt/Shared3/Surg-MAG/users/rosbrian"
         alias newtmux="tmux new-session \; rename-window vim \; new-window \; rename-window bash"
-        alias sshimgexch="ssh -p 7822 brian@server.imgexch.com"
         alias pycharm="nohup /home/rosbrian/PyCharm/bin/pycharm.sh &> /dev/null &"
-        alias matlab="nohup /mnt/1TB/2023b/bin/matlab -desktop &> /dev/null &"
-        alias sshrhvm1="ssh rosbrian@dgs-ap-ps1a"
-        alias sshrhvm2="ssh rosbrian@dgs-ap-ps2a"
-        alias sshrhvm3="ssh rosbrian@dgs-ap-ps3a"
-        alias sshrhvm4="ssh rosbrian@dgs-ap-ps4a"
+        alias matlab="nohup /mnt/1TB/MATLAB/2023b/bin/matlab -desktop &> /dev/null &"
+        alias sshmini="ssh rosbrian@192.168.1.102"
         alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
         ;;
     darter)
-        alias sshimgexch="ssh -p 7822 brian@imgexch.com"
         ;;
     Gazelle)
-        alias sshimgexch="ssh -p 7822 brian@imgexch.com"
         ;;
 esac
 

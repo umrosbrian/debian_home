@@ -100,10 +100,11 @@ pickFromList () {
 #this searches $1 for a term then returns both the filename containing a match and the line containing the match
 # Provide a path and optionally the arguments to find as a quoted argument to the function.  E.g. searchFiles 'DirName -type f -name "*\.txt" -o -name "*\.wpd"' MyTerm would search for MyTerm in all .txt and .wpd files within DirName. 
 #it would be really nice to have the grepped match maintain the red coloring...look at the compression fx script for this
+# I'm using --regexp in case the search term starts with a dash.  Otherwise, grep would think the term was an option.
 searchFiles () {
   IFS=$'\n'
   for filename in $(echo "find $1 -type f" | bash)
-  do match=$(grep -i "$2" "$filename")
+  do match=$(grep -i --regexp="$2" "$filename")
     if [ $? -eq 0 ] 
     then
       match=$(echo "$match" | sed 's/^[[:space:]]*//')
@@ -328,8 +329,8 @@ actVE () {
             echo "/home/imgexcom/venv activated"
             ;;
         dgs-ap-ps*a)
-            source ~/.virtualenvs/magpy_remote/bin/activate
-            echo "magpy_remote activated"
+            source /app/apps/magpy_users/venv/bin/activate
+            echo "/app/apps/magpy_users/venv activated"
             ;;
     esac 
 }
@@ -404,6 +405,7 @@ unmountNetworkDrives () {
   sudo umount ~/y
   sudo umount ~/t
   sudo umount ~/h
+  sudo umount /mnt/Shared3
 }
 
 mountNetworkDrives () {
@@ -437,7 +439,7 @@ mountNetworkDrives () {
         raspberrypi)
             foo=bar
             ;;
-        pop-os)
+        darter)
             sudo mount -t cifs -o username=rosbrian,domain=UMHS,uid=$(id -u),gid=$(id -g) //10.31.192.39/Shared3 /mnt/Shared3
             ;;
 #        dgs-ap-ps1a)
@@ -458,17 +460,21 @@ appleKeyboard () {
 }
 
 vpnOn () {
-  sudo openconnect -b vpn.med.umich.edu
-  case $HN in
-    omenubuntu)
-      sudo mount -a
-      ;;
-  esac
+  /opt/cisco/anyconnect/bin/vpn connect vpn.med.umich.edu
+  #sudo openconnect -b vpn.med.umich.edu
+
+  # The case statement will execute before the user has provided the password so won't work.
+#  case $HN in
+#    omenubuntu)
+#      sudo mount -a
+#      ;;
+#  esac
 }
 
 vpnOff () {
   #kill the pid my matching the process name
-  sudo pkill openconnect
+  #sudo pkill openconnect
+  /opt/cisco/anyconnect/bin/vpn disconnect
 }
 
 displaySleep () {
@@ -559,17 +565,19 @@ vnc353 () {
 }
 
 jobsLog () {
-    echo "***Ctrl + C to stop viewing log file***"
-    tail -F /app/apps/magpy_users/magpy/logs/jobs_loop-normal.log
+    log_file_path="$(ls /app/apps/magpy_users/repos/pacs-qr/logs/*_jobs_loop-normal.log)"
+    echo "viewing '$log_file_path'"
+    echo "***Ctrl + C to stop viewing***"
+    tail -F "$log_file_path"
 }
 
-jobsErrorLog () {
-    less /app/apps/magpy_users/magpy/logs/jobs_loop-error.log
+cronLog () {
+    sudo grep -e jobs_loop -e arhq -e hertz /var/log/cron
 }
 
 flaskLog () {
     echo "***Ctrl + C to stop viewing log file***"
-    tail -F /app/apps/magpy_users/magpy/logs/web_app-normal.log
+    tail -F /app/apps/magpy_users/repos/magpy_flask/logs/flask-normal.log
 }
 
 flaskPID () {
@@ -589,3 +597,47 @@ jobsPIDs () {
     done
 }
 
+
+dstop () {
+    sudo docker stop $1
+}
+
+druni () {
+    # run interactively
+    sudo docker run -it --rm --privileged $1
+}
+
+drund () {
+    # run detached
+    sudo docker run -dit --rm --privileged $1
+}
+
+dexec () {
+    sudo docker exec -it $1 bash
+}
+
+drmi () {
+    sudo docker rmi -f $1
+}
+
+checkBranches () {
+    cwd="$PWD"
+    cd /app/apps/magpy_users/repos/magpy
+    echo "magpy: $(git branch | sed -n '/\*/p')"
+    cd ../pyutils
+    echo "pyutils: $(git branch | sed -n '/\*/p')"
+    cd ../pacs-qr
+    echo "pacs-qr: $(git branch | sed -n '/\*/p')"
+    cd "$cwd"
+}
+
+pullRepos () {
+    cwd="$PWD"
+    cd /app/apps/magpy_users/repos/magpy
+    git pull
+    cd ../pyutils
+    git pull
+    cd ../pacs-qr
+    git pull
+    cd "$cwd"
+}
