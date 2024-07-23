@@ -240,6 +240,7 @@ case $HN in
         alias inboxes="cd /mnt/Shared3/Surgery-ICAM/SAHM/inboxes"
         ;;
     darter)
+        export PATH="$PATH:/opt/pycharm-2023.3.2/bin"
         ;;
     Gazelle)
         ;;
