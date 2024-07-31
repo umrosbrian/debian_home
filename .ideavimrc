@@ -58,6 +58,9 @@ nnoremap <leader>uib G:'t,.s/^    //<CR>
 "indent a sql subquery...move cursor to first line, type 'mt' to set a mark, type the last line number, execute the shortcut
 nnoremap <leader>sq G:'t,.s/^/    /<CR>$a)
 
+"remove all indentation - 'fl' standing for 'force left'
+nnoremap <leader>fl G:'t,.s/^[ ]*//<CR>
+
 "add comma to a block...move cursor to first line, type 'mt' to set a mark, type the last line number, execute the shortcut...
 "it jumps to the last line then does a substitution with the range being from the mark to the current line
 "the shortcut 'c' stands for 'commaquote'
