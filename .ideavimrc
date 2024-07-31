@@ -178,3 +178,5 @@ nnoremap <leader>uss iselect<Enter>from sahm.umpirecases uc<Enter>join sahm.stud
 nnoremap @dtv 0Ov = <Esc>j/dict<CR>df)iv<Esc>kp/execute<CR>
 
 nnoremap @cpi $Jxi<CR><Esc>
+
+set ideajoin
